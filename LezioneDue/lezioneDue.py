@@ -61,13 +61,36 @@ print("-------------------------------")
 3-3. Your Own List: Think of your favorite mode of transportation, such as a motorcycle or a car, and make a list that stores several examples.
 Use your list to print a series of statements about these items, such as “I would like to own a Honda motorcycle.”
 """
-mot = ["car","train","yacht"]
+mot: list = ["car","train","yacht"]
 for item in mot:
     print(f"I wonder if flying {item}s will ever exist.")
     print(f"Let's take a {item} to go as far as possible.")
 print("-------------------------------")
 
+"""
+3-4. Guest List: If you could invite anyone, living or deceased, to dinner, who would you invite? Make a list that includes at least three people you’d like to invite to dinner.
+Then use your list to print a message to each person, inviting them to dinner.
+"""
+invlist: list = ["me", "myself", "meAgain"]
+for item in invlist:
+    print(f"Hello {item}, you are invited to a special dinner!" )
+print("-------------------------------")
 
+"""
+3-5. Changing Guest List: You just heard that one of your guests can’t make the dinner, so you need to send out a new set of invitations.
+You’ll have to think of someone else to invite.
+• Start with your program from Exercise 3-4. Add a print() call at the end of your program, stating the name of the guest who can’t make it.
+• Modify your list, replacing the name of the guest who can’t make it with the name of the new person you are inviting.
+• Print a second set of invitation messages, one for each person who is still in your list.
+"""
+invlist: list = ["Me", "Myself", "I"]
+for item in invlist:
+    print(f"Hello {item}, you are invited to a special dinner!" )
+print(f"What? {invlist[2]} can't have dinner with me today? I'll invite someone else...")
+invlist[2] = "AlsoMe"
+for item in invlist:
+    print(f"Hello {item}, you are invited to a special dinner!" )
+print("-------------------------------")    
 
 
 

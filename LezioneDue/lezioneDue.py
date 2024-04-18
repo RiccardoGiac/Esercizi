@@ -57,5 +57,17 @@ for name in names:
     print(f"Buongiorno {name}. Benvenuto nel mio programma.")
 print("-------------------------------")
 
+"""
+3-3. Your Own List: Think of your favorite mode of transportation, such as a motorcycle or a car, and make a list that stores several examples.
+Use your list to print a series of statements about these items, such as “I would like to own a Honda motorcycle.”
+"""
+mot = ["car","train","yacht"]
+for item in mot:
+    print(f"I wonder if flying {item}s will ever exist.")
+    print(f"Let's take a {item} to go as far as possible.")
+print("-------------------------------")
+
+
+
 
 

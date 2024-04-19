@@ -90,7 +90,31 @@ print(f"What? {invlist[2]} can't have dinner with me today? I'll invite someone 
 invlist[2] = "AlsoMe"
 for item in invlist:
     print(f"Hello {item}, you are invited to a special dinner!" )
-print("-------------------------------")    
+print("-------------------------------")
+
+"""
+3-6. More Guests: You just found a bigger dinner table, so now more space is available. Think of three more guests to invite to dinner.
+• Start with your program from Exercise 3-4 or 3-5. Add a print() call to the end of your program, informing people that you found a bigger table.
+• Use insert() to add one new guest to the beginning of your list.
+• Use insert() to add one new guest to the middle of your list.
+• Use append() to add one new guest to the end of your list.
+• Print a new set of invitation messages, one for each person in your list.
+"""
+invlist: list = ["Me", "Myself", "I"]
+for item in invlist:
+    print(f"Hello {item}, you are invited to a special dinner!" )
+print(f"What? {invlist[2]} can't have dinner with me today? I'll invite someone else...")
+invlist[2] = "AlsoMe"
+for item in invlist:
+    print(f"Hello {item}, you are invited to a special dinner!" )
+print("Hello everyone i found a bigger table so i'll invite three more people")
+invlist.insert(0,"ObviouslyMe")
+invlist.append("OfCourseMe")
+invlist.insert((len(invlist)-1)//2, "DefinitelyMe")
+for item in invlist:
+    print(f"Hello {item}, you are invited to a special dinner!" )
+print("-------------------------------")
+
 
 
 

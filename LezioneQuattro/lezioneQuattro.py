@@ -34,4 +34,19 @@ check_length("ciao")
 check_length("ciao benvenuto nel mio programma")
 check_length("ciaocomeva")
 print("-------------------------------------")
+
+#Esercizio quattro: funzione che printa elementi di una lista di numeri con un for loop
+
+def print_numbers(l: list):
+    for n in l:
+        print(n)
+
+lista = [3,4,1]
+print_numbers(lista)
+print("-------------------------------------")
+
+
+
+
+
         

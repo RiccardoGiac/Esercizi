@@ -108,12 +108,19 @@ invlist[2] = "AlsoMe"
 for item in invlist:
     print(f"Hello {item}, you are invited to a special dinner!" )
 print("Hello everyone i found a bigger table so i'll invite three more people")
-invlist.insert(0,"ObviouslyMe")
-invlist.append("OfCourseMe")
-invlist.insert((len(invlist)-1)//2, "DefinitelyMe")
+invlist.insert(0,"ObviouslyMe")                                                     #Aggiunge item al primo index
+invlist.append("OfCourseMe")                                                        #Aggiunge item all'ultimo index
+if len(invlist) % 2 == 0:                                                           #Aggiunge item a metà lista
+    invlist.insert((len(invlist)-1)//2, "DefinitelyMe")
+else:
+    invlist.insert((len(invlist))//2, "DefinitelyMe")
 for item in invlist:
     print(f"Hello {item}, you are invited to a special dinner!" )
+print(invlist)
 print("-------------------------------")
+
+
+
 
 
 

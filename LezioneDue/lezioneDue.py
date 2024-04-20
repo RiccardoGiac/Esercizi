@@ -107,17 +107,65 @@ print(f"What? {invlist[2]} can't have dinner with me today? I'll invite someone 
 invlist[2] = "AlsoMe"
 for item in invlist:
     print(f"Hello {item}, you are invited to a special dinner!" )
-print("Hello everyone i found a bigger table so i'll invite three more people")
+print("Hello everyone i found a bigger table so i'll invite three more people")  
 invlist.insert(0,"ObviouslyMe")                                                     #Aggiunge item al primo index
 invlist.append("OfCourseMe")                                                        #Aggiunge item all'ultimo index
 if len(invlist) % 2 == 0:                                                           #Aggiunge item a metà lista
-    invlist.insert((len(invlist)-1)//2, "DefinitelyMe")
-else:
     invlist.insert((len(invlist))//2, "DefinitelyMe")
-for item in invlist:
+else:
+    invlist.insert((len(invlist)-1)//2, "DefinitelyMe")                             #Se è un odd number si può fare anche senza -1(?) quindi fare la cosa sia per odd che even senza if
+#list = [0,1,2,3]
+#len(list)-1 = 3		3//2 = 1    -> [0,x,1,2,3]  sbagliato
+#len(list)=4             4//2 = 2    -> [0,1,x,2,3] corretto
+
+#list = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]
+#len(list)-1 = 14        14//2 = 7   -> [0,1,2,3,4,5,6,x,7,8,9,10,11,12,13,14] corretto
+#len(list)=15            15//2 = 7   -> [0,1,2,3,4,5,6,x,7,8,9,10,11,12,13,14] corretto
+for item in invlist:                                                                
     print(f"Hello {item}, you are invited to a special dinner!" )
 print(invlist)
 print("-------------------------------")
+
+"""
+3-7. Shrinking Guest List: You just found out that your new dinner table won’t arrive in time for the dinner, and now you have space for only two guests.
+• Start with your program from Exercise 3-6. Add a new line that prints a message saying that you can invite only two people for dinner.
+• Use pop() to remove guests from your list one at a time until only two names remain in your list. 
+Each time you pop a name from your list, print a message to that person letting them know you’re sorry you can’t invite them to dinner.
+• Print a message to each of the two people still on your list, letting them know they’re still invited.
+• Use del to remove the last two names from your list, so you have an empty list. Print your list to make sure you actually have an empty list at the end of your program.
+"""
+invlist: list = ["Me", "Myself", "I"]
+for item in invlist:
+    print(f"Hello {item}, you are invited to a special dinner!" )
+print(f"What? {invlist[2]} can't have dinner with me today? I'll invite someone else...")
+invlist[2] = "AlsoMe"
+for item in invlist:
+    print(f"Hello {item}, you are invited to a special dinner!" )
+print("Hello everyone i found a bigger table so i'll invite three more people")  
+invlist.insert(0,"ObviouslyMe")                                                     #Aggiunge item al primo index
+invlist.append("OfCourseMe")                                                        #Aggiunge item all'ultimo index
+if len(invlist) % 2 == 0:                                                           #Aggiunge item a metà lista
+    invlist.insert((len(invlist))//2, "DefinitelyMe")
+else:
+    invlist.insert((len(invlist)-1)//2, "DefinitelyMe")
+for item in invlist:                                                                
+    print(f"Hello {item}, you are invited to a special dinner!" )
+print(invlist)
+print("I'm sorry the new table won't arrive in time for dinner and we have space only for two guests, so i need to organize the list again.")
+                                                                                                    #  len(invlist)=6  pop(indice)
+while len(invlist) > 2:                                                                             #while 6 > 2 quindi finchè ci sono almeno 2 items in invlist
+    print(f"Unfortunately {invlist.pop(0)} you will be removed due lack of space.")                 #rimuovi quello all'indice 0 per fare la lista da 2 items 
+                                                                                                    #la condizione per uscire dal while è determinata dal pop degli item
+                                                                                                    #che al tempo stesso ne ha salvato il nome che viene utilizzato per print
+for i in invlist:
+    print(f"{i}, you are still invited!")
+for i in range(len(invlist)):                                                                       #len(invlist) = 2 quindi fai questo due volte -> range(2)
+    del(invlist[0])                                                                                 #elimina l'item di indice 0    
+print(invlist)    
+print("-------------------------------")
+
+
+
 
 
 

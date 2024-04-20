@@ -45,6 +45,21 @@ lista = [3,4,1]
 print_numbers(lista)
 print("-------------------------------------")
 
+#Esercizio cinque(Mi sono accorto ora che dalle slide in realtà sono un esercizio in meno quindi questo è il 4)
+#Funzione che prende una lista di numeri come parametri. Per ogni numero printa se è minore maggiore o uguale a 5
+
+def check_each(l: list):
+    for i in l:
+        if i > 5:
+            print(f"Il numero {i} è maggiore di 5")
+        elif i < 5:
+            print(f"Il numero {i} è minore di 5")
+        else:
+            print(f"Il numero {i} è uguale a 5")
+
+lista : list = [1,6,5] 
+check_each(lista) 
+print("-------------------------------------")  
 
 
 

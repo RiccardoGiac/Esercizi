@@ -61,6 +61,25 @@ lista : list = [1,6,5]
 check_each(lista) 
 print("-------------------------------------")  
 
+#Esercizio cinque: Funzione che prende come parametro un int e aggiunge 1 e lo ritorna.
+#Altra funzione prende una lista di int come parametro e aggiunge 1 a tutti gli int attraverso la prima funzione e li mette dentro una nuova lista 
+
+def add_one(x: int) -> int:
+    x += 1
+    return x
+
+def add_one_to_list(l: list):
+    new_list: list = []
+    for i in l:
+        new_list.append(add_one(i))
+    print(new_list)
+
+l: list = [1,4,5,6]
+add_one_to_list(l)
+print("-------------------------------------") 
+
+
+
 
 
 

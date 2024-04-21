@@ -211,8 +211,25 @@ print("-------------------------------")
 3-10. Every Function: Think of things you could store in a list. For example, you could make a list of mountains, rivers, countries, cities, languages, or anything else you’d like.
  Write a program that creates a list containing these items and then uses each function introduced in this chapter at least once.
 """
-
-
+food: list = []
+food.append("Pizza")
+food.insert(0, "Sushi")
+if len(food) % 2 == 0:                                                           
+    food.insert((len(food))//2, "Carbonara")
+else:
+    food.insert((len(food)-1)//2, "Carbonara")
+print(food)
+print(f"{sorted(food)}")
+print(food)
+food.sort()
+print(food)
+print(f"{food.pop(2)} will be removed from the list.")
+print(food)
+print("One more item will be removed from the list")
+food.remove("Pizza")
+print(food)
+print("We don't need this list anymore")
+del(food)
 
 
 

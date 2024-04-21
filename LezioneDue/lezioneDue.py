@@ -194,6 +194,24 @@ places.sort(reverse = True)
 print(places)
 print("-------------------------------")
 
+"""
+3-9. Dinner Guests: Working with one of the programs from Exercises 3, use len() to print a message indicating the number of people you’re inviting to dinner.(3-5.)
+"""
+invlist: list = ["Me", "Myself", "I"]
+for item in invlist:
+    print(f"Hello {item}, you are invited to a special dinner!" )
+print(f"What? {invlist[2]} can't have dinner with me today? I'll invite someone else...")
+invlist[2] = "AlsoMe"
+for item in invlist:
+    print(f"Hello {item}, you are invited to a special dinner!" )
+print(f"{len(invlist)} people have been invited to dinner")
+print("-------------------------------")
+
+"""
+3-10. Every Function: Think of things you could store in a list. For example, you could make a list of mountains, rivers, countries, cities, languages, or anything else you’d like.
+ Write a program that creates a list containing these items and then uses each function introduced in this chapter at least once.
+"""
+
 
 
 

@@ -283,9 +283,15 @@ print("-------------------------------")
 Store these dictionaries in a list called pets. Next, loop through your list and as
 you do, print everything you know about each pet. 
 """
+pet1: dict = {"type" : "dog" , "owner" : "Paolo"}
+pet2: dict = {"type" : "cat" , "owner" : "Carlo"}
+pet3: dict = {"type" : "snake" , "owner" : "Diana"}
 
-
-
+pets: list = [pet1, pet2, pet3]
+for i in range(len(pets)):
+    for key in pets[i]:
+        print(f"{key} : {pets[i][key]}")
+print("-------------------------------")
 
 
 

@@ -251,8 +251,19 @@ for key in fav_nums:
 print("-------------------------------")
 
 """
-
+6-3. Glossary: A Python dictionary can be used to model an actual dictionary. However, to avoid confusion, let’s call it a glossary.
+• Think of five programming words you’ve learned about in the previous chapters. Use these words as the keys in your glossary, and store their meanings as values.
+• Print each word and its meaning as neatly formatted output. 
+You might print the word followed by a colon and then its meaning, or print the word on one line and then print its meaning indented on a second line. 
+Use the newline character (\n) to insert a blank line between each word-meaning pair in your output.
 """
+glossary: dict = {"set" : "Unordered collection of items that doesn't have duplicates", "print()" : "Built-in function that prints on the screen what we type in the parenthesis"
+                  , "for" : "Structure we usually use to cicle through lists of elements", "int" : "Data type that comprehends Integers numbers",
+                  "sorted()" : "Function that returns an ordered list of the list we pass as argument without changing it"}
+for key in glossary:
+    print(f"{key} : {glossary[key]} \n")
+print("-------------------------------")
+
 
 
 

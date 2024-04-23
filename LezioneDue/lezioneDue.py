@@ -264,8 +264,25 @@ for key in glossary:
     print(f"{key} : {glossary[key]} \n")
 print("-------------------------------")
 
+"""
+6-7. People: Start with the program you wrote for Exercise 6-1. Make two new dictionaries representing different people, 
+and store all three dictionaries in a list called people. Loop through your list of people. As you loop through the list, print everything you know about each person.
+"""
+person: dict = {"first_name" : "Fabrizio", "last_name" : "Barberi", "age" : 29, "city" : "Aprilia" }
+person2: dict = {"first_name" : "Riccardo", "last_name" : "Giacalone", "age" : 27, "city" : "Aprilia" }
+person3: dict = {"first_name" : "Andrea", "last_name" : "Cogni", "age" : 26, "city" : "Piombino" }
 
+people: list = [person, person2, person3]
+for i in range(len(people)):
+    for key in people[i]:
+        print(f"{key} : {people[i][key]}")
+print("-------------------------------")
 
+"""
+6-8. Pets: Make several dictionaries, where each dictionary represents a different pet. In each dictionary, include the kind of animal and the owner’s name. 
+Store these dictionaries in a list called pets. Next, loop through your list and as
+you do, print everything you know about each pet. 
+"""
 
 
 

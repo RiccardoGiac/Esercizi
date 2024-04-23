@@ -240,8 +240,19 @@ person: dict = {"first_name" : "Fabrizio", "last_name" : "Barberi", "age" : 29, 
 print(f"{person['first_name']} {person['last_name']} of age {person['age']} lives in {person['city']} ")
 print("-------------------------------")
 
+"""
+6-2. Favorite Numbers: Use a dictionary to store people’s favorite numbers. Think of five names, and use them as keys in your dictionary.
+Think of a favorite number for each person, and store each as a value in your dictionary. Print each person’s name and their favorite number.
+For even more fun, poll a few friends and get some actual data for your program.
+"""
+fav_nums: dict = {"Riccardo" : 4, "Fabrizio" : 10, "Andrea" : 3, "Fabio" : 7, "Luigi" : 7}
+for key in fav_nums:
+    print(f"{key} has {fav_nums[key]} as favorite number.")
+print("-------------------------------")
 
+"""
 
+"""
 
 
 

@@ -304,5 +304,23 @@ for key in favorite_places:
     print(f"{key} likes {favorite_places[key]}")
 print("-------------------------------")
 
+"""
+6-10. Favorite Numbers: Modify your program from Exercise 6-2 so each person can have more than one favorite number. 
+Then print each person’s name along with their favorite numbers.
+"""
+fav_nums: dict = {"Riccardo" : 4, "Fabrizio" : 10, "Andrea" : 3, "Fabio" : 7, "Luigi" : 7}
+for key in fav_nums:
+    print(f"{key} has {fav_nums[key]} as favorite number.")
 
+fav_nums["Riccardo"] = 4, 22
+fav_nums["Fabrizio"] = 10,8
+fav_nums["Andrea"] = 3,16,1
+fav_nums["Fabio"] = 7,20,15
+fav_nums["Luigi"] = 7,11
+for key in fav_nums:
+    print(f"{key} has {fav_nums[key]} as favorite numbers.")
+print("-------------------------------")
 
+"""
+
+"""

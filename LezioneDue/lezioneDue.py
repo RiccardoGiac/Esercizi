@@ -322,5 +322,21 @@ for key in fav_nums:
 print("-------------------------------")
 
 """
-
+6-11. Cities: Make a dictionary called cities. Use the names of three cities as keys in your dictionary.
+Create a dictionary of information about each city and include the country that the city is in, its approximate population, and one fact about that city.
+The keys for each city’s dictionary should be something like country, population, and fact. Print the name of each city and all of the information you have stored about it.
 """
+cities: dict ={"New York" : "", "Tokyo": "", "Prague": ""}
+infoNY: dict ={"Country" : "America", "Population": "8,336 millions", "Fact" :
+                "More than 800 languages are spoken in New York City,making it the most linguistically diverse city in the world."}
+infoT: dict = {"Country" : "Japan", "Population": "13,96 millions", "Fact" :
+               "Tokyo holds the record for being the world's most populated metropolis."}
+infoP: dict = {"Country": "Czech Republic", "Population" : "1,309 millions", "Fact" : 
+               "Prague is home of the largest castle in the world"}
+cities["New York"] = infoNY
+cities["Tokyo"] = infoT
+cities["Prague"] = infoP
+
+for key in cities:
+    print(f"{key}: {cities[key]}")
+print("-------------------------------")

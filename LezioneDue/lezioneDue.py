@@ -340,3 +340,26 @@ cities["Prague"] = infoP
 for key in cities:
     print(f"{key}: {cities[key]}")
 print("-------------------------------")
+
+"""
+6-12. Extensions: We’re now working with examples that are complex enough that they can be extended in any number of ways.
+Use one of the example programs from this chapter, and extend it by adding new keys and values, changing the context of the program, or improving the formatting of the output.
+"""
+#changing 6-11
+
+infoM : dict ={"Country" : "Spain", "Population": " 3,223 millions", "Fact" :
+               "Madrid has the only monument to the devil in the world." }
+cities["Madrid"] = infoM
+for key in cities:
+    print(f"{(key)}: {cities[key]} \n")
+print("Madrid will be removed: \n")
+del(cities["Madrid"])
+for key in cities:
+    print(f"{(key)}: {cities[key]} \n")
+
+infoNY["TimeZone"] = "UTC-5"
+infoT["TimeZone"] = "UTC+9"
+infoP["TimeZone"] = "UTC+2"
+for key in cities:
+    print(f"{(key)}: {cities[key]} \n")
+

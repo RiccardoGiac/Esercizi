@@ -300,5 +300,9 @@ To make this exercise a bit more interesting, ask some friends to name a few of 
 Loop through the dictionary, and print each person’s name and their favorite places.
 """
 favorite_places: dict = {"Fabrizio" : "Spain,France,Greece", "Andrea" : "Japan,Thailand,South Korea", "Luigi" : "America, Iceland"}
+for key in favorite_places:
+    print(f"{key} likes {favorite_places[key]}")
+print("-------------------------------")
+
 
 

@@ -276,3 +276,52 @@ else:
     print("+10 points")
 print("-------------------------------------")
 
+"""
+5-5. Alien Colors #3: Turn your if-else chain from Exercise 5-4 into an if-elif-else chain.
+
+• If the alien is green, print a message that the player earned 5 points.
+• If the alien is yellow, print a message that the player earned 10 points.
+• If the alien is red, print a message that the player earned 15 points.
+• Write three versions of this program, making sure each message is printed for the appropriate color alien.
+"""
+def alienColor(alien_color:str):
+    if alien_color == "green":
+        print("Green: +5 points")
+    elif alien_color == "yellow":
+        print("Yellow: +10 points")
+    else:
+        print("Red: +15 points")
+alienColor(alien_color)
+alien_color = "red"
+alienColor(alien_color)
+alien_color = "yellow"
+alienColor(alien_color)
+print("-------------------------------------")
+
+"""
+5-6. Stages of Life: Write an if-elif-else chain that determines a person’s stage of life. Set a value for the variable age, and then:
+• If the person is less than 2 years old, print a message that the person is a baby.
+• If the person is at least 2 years old but less than 4, print a message that the person is a toddler.
+• If the person is at least 4 years old but less than 13, print a message that the person is a kid.
+• If the person is at least 13 years old but less than 20, print a message that the person is a teenager.
+• If the person is at least 20 years old but less than 65, print a message that the person is an adult.
+• If the person is age 65 or older, print a message that the person is an elder.
+"""
+age: int = 6
+if age < 2:
+    print("The person is still a baby")
+elif age >= 2 and age < 4:
+    print("The person is a toddler")
+elif age >= 4 and age < 13:
+    print("The person is a kid")
+elif age >= 13 and age < 20:
+    print("The person is a teenager")
+elif age >= 20 and age < 65:
+    print("The person is an adult")
+else:
+    print("The person is an elder")
+print("-------------------------------------")
+
+
+
+

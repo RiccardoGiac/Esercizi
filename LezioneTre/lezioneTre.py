@@ -23,3 +23,17 @@ Store the names of these animals in a list, and then use a for loop to print out
 • Modify your program to print a statement about each animal, such as A dog would make a great pet.
 • Add a line at the end of your program, stating what these animals have in common. You could print a sentence, such as Any of these animals would make a great pet!
 """
+animals: list = ["lion","bear","fox"]
+for i in animals:
+    if i == "lion":
+        print(f"The {i} is the king of the jungle.")
+    elif i == "bear":
+        print(f"The {i} likes to eat fish")
+    else:
+        print(f"What does the {i} say?")
+print("They are all wild animals.")
+print("-------------------------------------")
+
+"""
+
+"""

@@ -66,3 +66,30 @@ odds: list = [i for i in range(1, 20, 2)]
 for i in odds:
     print(i)
 print("-------------------------------------")
+
+"""
+4-7. Threes: Make a list of the multiples of 3, from 3 to 30. Use a for loop to print the numbers in your list.
+"""
+threes: list = [i for i in range(3, 31, 3)]
+for i in threes:
+    print(i)
+print("-------------------------------------")
+
+"""
+4-8. Cubes: A number raised to the third power is called a cube. For example, the cube of 2 is written as 2**3 in Python. 
+Make a list of the first 10 cubes (that is, the cube of each integer from 1 through 10), and use a for loop to print out the value of each cube.
+"""
+cubes: list = [i**3 for i in range(1, 11)]
+for i in cubes:
+    print(i)
+print("-------------------------------------")
+
+"""
+4-9. Cube Comprehension: Use a list comprehension to generate a list of the first 10 cubes. --->> Fatto nel 4-8
+"""
+"""
+4-10. Slices: Using one of the programs you wrote in this chapter, add several lines to the end of the program that do the following:
+• Print the message The first three items in the list are:. Then use a slice to print the first three items from that program’s list.
+• Print the message Three items from the middle of the list are:. Then use a slice to print three items from the middle of the list.
+• Print the message The last three items in the list are:. Then use a slice to print the last three items in the list.
+"""

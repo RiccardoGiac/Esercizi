@@ -35,5 +35,17 @@ print("They are all wild animals.")
 print("-------------------------------------")
 
 """
+4-3. Counting to Twenty: Use a for loop to print the numbers from 1 to 20, inclusive.
+"""
+for i in range(1,21):
+    print(i)
+print("-------------------------------------")
 
 """
+4-4. One Million: Make a list of the numbers from one to one million, and then use a for loop to print the numbers. 
+(If the output is taking too long, stop it by pressing CTRL-C or by closing the output window.)
+"""
+millions: list = [i for i in range(1, 1000001)]
+for i in millions:
+    print(i)
+print("-------------------------------------")

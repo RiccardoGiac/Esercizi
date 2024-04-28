@@ -120,5 +120,129 @@ print("-------------------------------------")
 
 """
 4-12. More Loops: All versions of foods.py in this section have avoided using for loops when printing, to save space. 
-Choose a version of foods.py, and write two for loops to print each list of foods.
+Choose a version of foods.py, and write two for loops to print each list of foods. ---> Dal 4-12 al 4-15 non è chiaro ed il link del 4-14 fa page not found.
 """
+
+"""
+5-1. Conditional Tests: Write a series of conditional tests. Print a statement
+describing each test and your prediction for the results of each test. Your code
+should look something like this:
+car = 'subaru'
+print("Is car == 'subaru'? I predict True.")
+print(car == 'subaru')
+print("\nIs car == 'audi'? I predict False.")
+print(car == 'audi')
+• Look closely at your results, and make sure you understand why each line
+evaluates to True or False.
+• Create at least 10 tests. Have at least 5 tests evaluate to True and another
+5 tests evaluate to False.
+"""
+dog: str = "American Akita"
+print("Is dog == 'Akita inu'? I predict False.")
+print(dog == "Akita Inu")
+print("Is dog == 'American Akita'? I predict True.")
+print(dog == "American Akita")
+
+food: str = "Pizza"
+print("is food == 'Pasta'? I predict False.")
+print(food == "Pasta")
+print("is food == 'Pizza'? I predict True.")
+print(food == "Pizza")
+
+person: str = "Davide"
+print("is person == 'Carlo'? I predict False")
+print(person == "Carlo")
+print("is food == 'Davide'? I predict True")
+print(person == "Davide")
+
+city: str = "Rome"
+print("is city == 'Rome'? I predict True")
+print(city == "Rome")
+print("is city == 'London'? I predict False")
+print(city == "London")
+
+social: str = "Instagram"
+print("is social == 'X'? I predict False")
+print(social == "X")
+print("is social == 'Instagram'? I predict True")
+print(social == "Instagram")
+print("-------------------------------------")
+
+"""
+5-2. More Conditional Tests: You don’t have to limit the number of tests you cre-
+ate to 10. If you want to try more comparisons, write more tests and add them
+
+to conditional_tests.py. Have at least one True and one False result for each of
+the following:
+• Tests for equality and inequality with strings
+• Tests using the lower() method
+• Numerical tests involving equality and inequality, greater than and less
+than, greater than or equal to, and less than or equal to
+• Tests using the and keyword and the or keyword
+• Test whether an item is in a list
+• Test whether an item is not in a list
+"""
+#Equality or inequality strings
+string:str = "Ciao"
+print(string != "Ciao")
+print(string == "Ciao")
+#With If
+if string == "Ciao":
+    print(string)
+else:
+    print("sbagliato")
+if string != "Ciao":
+    print(string)
+else:
+    print("sbagliato")
+#With lower()
+if string.lower() == "ciao":
+    print(string)
+else:
+    print("sbagliato")
+if string.lower() != "ciao":
+    print(string)
+else:
+    print("sbagliato")
+#Numerical tests
+number: int = 10
+if number == 10:
+    print(number)
+else:
+    print("sbagliato")
+if number > 5:
+    print(number)
+else:
+    print("sbagliato")
+if number < 5:
+    print(number)
+else:
+    print("sbagliato") 
+if number >= 8:
+    print(number)
+else:
+    print("sbagliato")
+if number <= 8:
+    print(number)
+else:
+    print("sbagliato")
+#using and and or:
+if number > 5 and number < 20:
+    print(number)
+else:
+    print("sbagliato")
+if number < 5 or number > 11:
+    print(number)
+else:
+    print("sbagliato")
+#Test if in list:
+ls: list[int] = [3,10,22]
+if 3 in ls:
+    print("3 is in the list")
+else:
+    print("3 is not in the list")
+if 5 in ls:
+    print("5 is in the list")
+else:
+    print("5 is not in the list")
+print("-------------------------------------")

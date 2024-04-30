@@ -83,3 +83,25 @@ def make_album(artist: str, album: str, nsongs: int = None) -> dict:
 
 print(make_album("Drake","Take Care"))
 print(make_album("Linkin Park","A Thousand Suns",16))
+print("-------------------------------------")
+
+"""
+8-8. User Albums: Start with your program from Exercise 8-7. Write a while loop that allows users to enter an album’s artist and title. 
+Once you have that information, call make_album() with the user’s input and print the dictionary that’s created. Be sure to include a quit value in the while loop.
+"""
+while True:
+    artist = input("Insert artist name: ")
+    album = input("Insert Album title: ")
+    nsongs = input("Insert number of songs:")
+    print(make_album(artist, album, nsongs))
+    quit_request: str = input("Insert yes to quit the program or anything else to insert new data: ")
+    if quit_request.lower().strip() == "yes":
+        break
+print("-------------------------------------")
+"""
+8-9. Messages: Make a list containing a series of short text messages. Pass the list to a function called show_messages(), which prints each text message.
+"""
+
+       
+
+    

@@ -101,7 +101,11 @@ print("-------------------------------------")
 """
 8-9. Messages: Make a list containing a series of short text messages. Pass the list to a function called show_messages(), which prints each text message.
 """
-
+messages: list = ["Hello","How are you?","Good to see you","Have a good day"]
+def show_messages(msgs: list):
+    for i in msgs:
+        print(i)
+show_messages(messages)
        
 
     

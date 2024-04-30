@@ -147,6 +147,14 @@ print("-------------------------------------")
 The function should have one parameter that collects as many items as the function call provides, and it should print a summary of the sandwich that’s being ordered. 
 Call the function three times, using a different number of arguments each time.
 """
+def sandwichOrder(*args:int):
+    print(f"You ordered a sandwich with {args}") 
+sandwichOrder("mayonnaise", "eggs", "tuna")
+sandwichOrder("ham","mozzarella")
+sandwichOrder("tuna", "tomato","salad")
+print("-------------------------------------")
+
+    
 
 
     

@@ -1,4 +1,5 @@
 #Riccardo Giacalone
+import copy
 """
 8-1. Message: Write a function called display_message() that prints one sentence telling everyone what you are learning about in this chapter. 
 Call the function, and make sure the message displays correctly.
@@ -89,15 +90,15 @@ print("-------------------------------------")
 8-8. User Albums: Start with your program from Exercise 8-7. Write a while loop that allows users to enter an album’s artist and title. 
 Once you have that information, call make_album() with the user’s input and print the dictionary that’s created. Be sure to include a quit value in the while loop.
 """
-while True:
-    artist = input("Insert artist name: ")
-    album = input("Insert Album title: ")
-    nsongs = input("Insert number of songs:")
-    print(make_album(artist, album, nsongs))
-    quit_request: str = input("Insert yes to quit the program or anything else to insert new data: ")
-    if quit_request.lower().strip() == "yes":
-        break
-print("-------------------------------------")
+#while True:
+#    artist = input("Insert artist name: ")
+#    album = input("Insert Album title: ")
+#    nsongs = input("Insert number of songs:")
+#    print(make_album(artist, album, nsongs))
+#    quit_request: str = input("Insert yes to quit the program or anything else to insert new data: ")
+#    if quit_request.lower().strip() == "yes":
+#        break
+#print("-------------------------------------")
 """
 8-9. Messages: Make a list containing a series of short text messages. Pass the list to a function called show_messages(), which prints each text message.
 """
@@ -106,6 +107,46 @@ def show_messages(msgs: list):
     for i in msgs:
         print(i)
 show_messages(messages)
-       
+print("-------------------------------------")
+"""
+8-10. Sending Messages: Start with a copy of your program from Exercise 8-9. 
+Write a function called send_messages() that prints each text message and moves each message to a new list called sent_messages as it’s printed. 
+After calling the function, print both of your lists to make sure the messages were moved correctly.
+"""    
+messages: list = ["Hello","How are you?","Good to see you","Have a good day"]
+
+sent_messages: list = []
+def send_messages(msgs:list):
+    for i in msgs:
+        print(i)
+        sent_messages.append(i)
+    msgs.clear()
+send_messages(messages)
+print(messages)
+print(sent_messages)
+print("-------------------------------------")
+"""
+8-11. Archived Messages: Start with your work from Exercise 8-10. Call the function send_messages() with a copy of the list of messages. 
+After calling the function, print both of your lists to show that the original list has retained its messages.
+"""
+messages: list = ["Hello","How are you?","Good to see you","Have a good day"]
+messagesc: list = copy.copy(sent_messages)
+sent_messages: list = []
+def send_messages(msgs:list):
+    for i in msgs:
+        print(i)
+        sent_messages.append(i)
+    msgs.clear()
+send_messages(messagesc)
+print(messages)
+print(sent_messages)
+print(messagesc)
+print("-------------------------------------")
+"""
+8-12. Sandwiches: Write a function that accepts a list of items a person wants on a sandwich. 
+The function should have one parameter that collects as many items as the function call provides, and it should print a summary of the sandwich that’s being ordered. 
+Call the function three times, using a different number of arguments each time.
+"""
+
 
     

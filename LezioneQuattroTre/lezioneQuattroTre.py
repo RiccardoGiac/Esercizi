@@ -147,8 +147,10 @@ print("-------------------------------------")
 The function should have one parameter that collects as many items as the function call provides, and it should print a summary of the sandwich that’s being ordered. 
 Call the function three times, using a different number of arguments each time.
 """
-def sandwichOrder(*args:int):
-    print(f"You ordered a sandwich with {args}") 
+def sandwichOrder(*args: str):
+    print(f"You ordered a sandwich with:") 
+    for e in args:
+        print(f"{e}")
 sandwichOrder("mayonnaise", "eggs", "tuna")
 sandwichOrder("ham","mozzarella")
 sandwichOrder("tuna", "tomato","salad")
@@ -157,11 +159,14 @@ print("-------------------------------------")
 """
 8-13. User Profile:  Build a profile of yourself by calling build_profile(), using your first and last names and three other key-value pairs that describe you. 
 All the values must be passed to the function as parameters. The function then must return a string such as "Eric Crow, age 45, hair brown, weight 67"
-"""
-def build_profile(name: str, last_name: str, age: str, hair: str, weight: int):
+"""         
+def build_profile(name: str, last_name: str, age: str, hair: str, weight: int) -> str :      #Ho provato a farlo con **info come l'8-14 ma non so come ritornare una stringa
+                                                                                             #Con info che non sono specificate e vanno messe al momento in cui si richiama la funzione   
     profile: str = f"{name} {last_name}, age {age}, hair {hair}, weight {weight}"
     return profile
 print(build_profile("Riccardo","Giacalone",27,"Black",60))
+
+
 print("-------------------------------------")
 
 """
@@ -171,7 +176,19 @@ Call the function with the required information and two other name-value pairs, 
 Your function should work for a call like this one: car = make_car('subaru', 'outback', color='blue', tow_package=True) 
 Print the dictionary that’s returned to make sure all the information was stored correctly. 
 """
-   
+def car_info(manufacturer: str,model: str,**info):
+    info["manufacturer"] = manufacturer
+    info["model"] = model
+    return info
+
+car = car_info("bmw", "m4", prod_year = 2021, color = "blue")
+print(car)
+print("-------------------------------------")
+
+
+
+
+
 
 
     

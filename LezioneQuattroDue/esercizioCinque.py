@@ -15,20 +15,4 @@ def move_zeroes(nums:list[int]):
 list: list = [0,5,4,2,0,1,2]
 move_zeroes(list)
 
-def blackjack_hand_total(cards) -> int:
-    # elimina il pass e inserisci il tuo codice
-    result: int = 0
-    aces = []
-    otherCards = []
-    for i in cards:
-        if i != 1 and i != 11:
-            otherCards.append(i)
-        else:
-            aces.append(i)
-    for i in otherCards:
-         result += i
-    print(result)
-    print(aces)
-    print(otherCards)
 
-print(blackjack_hand_total([11,5,5]))

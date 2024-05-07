@@ -93,17 +93,42 @@ Un elemento è considerato isolato se non è affiancato sia a destra che a sinis
 """
 def count_isolated(ls: list[int]) -> int:
     # cancella ... e definisci parametri e tipo di dato, successivamente cancella pass e scrivi il tuo codice
-    ls1: list = []
+    count: int = 0
     i: int = 0
     while i < len(ls):
-        for e in ls:
-            if i == 0 and e[i+1] != e[i]:
-                ls1.append(i)
-            elif i == len(ls)-1 and e[i-1] != e[i]:
-                ls.append(i)
-            elif e[i] != e[i-1] and e[i] != e[i+1]:
-                ls.append(i)
-            else:
-                continue
+        if i == len(ls) - 1:
+            break
+        if i == 0:
+            if ls[i] != ls[i+1]:
+                count +=1
+        elif i == len(ls) -1:
+            if ls[i] != ls[i-1]:
+                count += 1
+        if ls[i] != ls[i+1] and ls[i] != ls[i-1]:
+            count += 1
+        i += 1
+    return count
+print("---------------------------------------")
+"""
+Scrivi una funzione che, dato un insieme e una lista di numeri interi da rimuovere, ritorni un nuovo insieme senza i numeri specificati nella lista.
+"""
+def remove_elements(original_set: set[int], elements_to_remove: list[int]) -> set[int]:
+    # cancella pass e scrivi il tuo codice
+    setrem: set = set(elements_to_remove)
+    return original_set - setrem
+print("---------------------------------------")
+
+"""
+Scrivi una funzione che unisce due dizionari. Se una chiave è presente in entrambi, somma i loro valori.
+"""
+def merge_dictionaries(dict1: dict, dict2: dict) -> dict:
+    # cancella pass e scrivi il tuo codice
+    dict3 = dict1|dict2
+    for key in dict1:
+        if key in dict2:
+            dict3[key] =  dict1[key] + dict2[key]
     
-    return len(ls1)
+    
+    return dict3
+   
+

@@ -3,9 +3,11 @@ from typing import Any
 
 class Person:
 
+
+
     def __init__(self,name :str,surname:str,date_of_birth: str,gender:str) -> None:
         
-        self.name: str = name
+        self.name: str = name               #se si scrive self._name è come dire se fosse private in java, non si accede fuori la classe
         self.surname: str = surname
         self.date_of_birth: str = date_of_birth
         self.gender: str = gender

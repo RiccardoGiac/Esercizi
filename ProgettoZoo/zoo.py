@@ -1,8 +1,3 @@
-class Zoo:
-
-    def __init__(self,fences: Fence, zoo_keepers: Zookeeper):
-        self.fences = fences
-        self.zoo_keepers = zoo_keepers
 
 class Animal:
 
@@ -28,6 +23,24 @@ class Zookeeper:
         self.name = name
         self.surname = surname
         self.id = id 
-        
 
+    def add_animal(self,animal:Animal,fence:Fence):
+        pass
+
+    def remove_animal(self,animal:Animal,fence:Fence):
+        pass
+
+    def feed(self,animal:Animal):
+        pass
+
+    def clean(self,fence:Fence):
+        pass
         
+class Zoo:
+
+    def __init__(self,fences: Fence, zoo_keepers: Zookeeper):
+        self.fences = fences
+        self.zoo_keepers = zoo_keepers
+
+    def describe_zoo(self):
+        pass

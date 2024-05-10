@@ -28,3 +28,28 @@ r2: Restaurant = Restaurant(restaurant_name="VillaNuova", cuisine_type="Chic")
 r2.describe_restaurant()
 r3: Restaurant = Restaurant(restaurant_name="Tavola", cuisine_type="Tavola Calda")
 r3.describe_restaurant()
+
+"""
+9-3. Users: Make a class called User. Create two attributes called first_name 
+and last_name, and then create several other attributes that are typically 
+stored in a user profile. Make a method called describe_user() that prints 
+a summary of the user’s information. Make another method called greet_user() 
+that prints a personalized greeting to the user. Create several instances 
+representing different users, and call both methods for each user.
+"""
+class User:
+
+    def __init__(self, first_name: str, last_name: str, date_of_birth : str) -> None:
+        self.first_name : str = first_name
+        self.last_name : str = last_name
+        self.date_of_birth : str = date_of_birth
+
+    def describe_user(self):
+        print(f"Name= {self.first_name}, last name= {self.last_name}, date of birth = {self.date_of_birth}")
+
+    def greet_user(self):
+        print(f"Hello, {self.first_name}, how are you?")
+
+user1: User = User(first_name="Riccardo",last_name="Giacalone",date_of_birth="28/06/1996")
+user1.describe_user()
+user1.greet_user()

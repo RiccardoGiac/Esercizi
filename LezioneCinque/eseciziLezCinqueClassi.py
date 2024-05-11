@@ -28,6 +28,7 @@ r2: Restaurant = Restaurant(restaurant_name="VillaNuova", cuisine_type="Chic")
 r2.describe_restaurant()
 r3: Restaurant = Restaurant(restaurant_name="Tavola", cuisine_type="Tavola Calda")
 r3.describe_restaurant()
+print("---------------------------------------")
 
 """
 9-3. Users: Make a class called User. Create two attributes called first_name 
@@ -53,3 +54,50 @@ class User:
 user1: User = User(first_name="Riccardo",last_name="Giacalone",date_of_birth="28/06/1996")
 user1.describe_user()
 user1.greet_user()
+print("---------------------------------------")
+
+"""
+9-4. Number Served: Start with your program from Exercise 9-1. Add an attribute called number_served with a default value of 0. 
+Create an instance called restaurant from this class. Print the number of customers the restaurant has served, and then change this value and print it again. 
+Add a method called set_number_served() that lets you set the number of customers that have been served. Call this method with a new number and print the value again. 
+Add a method called increment_number_served() that lets you increment the number of customers who’ve been served. 
+Call this method with any number you like that could represent how many customers were served in, say, a day of business. 
+"""
+
+class Restaurant():
+
+    def __init__(self,restaurant_name : str, cuisine_type : str) -> None:
+        self.restaurant_name : str = restaurant_name
+        self.cuisine_type : str = cuisine_type
+        self.number_served : int = 0
+    
+    def describe_restaurant(self):
+        print(f"Name= {self.restaurant_name}, cuisine type= {self.cuisine_type}")
+
+    def open_restaurant(self):
+        print(f"{self.restaurant_name} is open!") 
+
+    def set_number_served(self,number_served : int):
+        self.number_served = number_served  
+
+    def increment_number_served(self):
+        self.number_served += 1      
+
+r1: Restaurant = Restaurant(restaurant_name="PizzaPizza", cuisine_type="Pizzeria")
+r1.describe_restaurant()
+r1.number_served = 4
+print(f"Number served = {r1.number_served}")
+r2: Restaurant = Restaurant(restaurant_name="VillaNuova", cuisine_type="Chic")
+r2.describe_restaurant()
+r2.number_served = 200
+print(f"Number served = {r2.number_served}")
+r3: Restaurant = Restaurant(restaurant_name="Tavola", cuisine_type="Tavola Calda")
+r3.describe_restaurant()
+r3.number_served = 60
+print(f"Number served = {r3.number_served}")
+r1.increment_number_served()
+r1.describe_restaurant()
+print(f"Number served = {r1.number_served}")
+
+
+print("---------------------------------------")

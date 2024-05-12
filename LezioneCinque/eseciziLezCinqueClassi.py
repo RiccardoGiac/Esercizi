@@ -101,3 +101,43 @@ print(f"Number served = {r1.number_served}")
 
 
 print("---------------------------------------")
+
+"""
+9-5. Login Attempts: Add an attribute called login_attempts to your User class from Exercise 9-3. 
+Write a method called increment_login_attempts() that increments the value of login_attempts by 1. 
+Write another method called reset_login_attempts() that resets the value of login_attempts to 0. 
+Make an instance of the User class and call increment_login_attempts() several times. 
+Print the value of login_attempts to make sure it was incremented properly, and then call reset_login_attempts(). Print login_attempts again to make sure it was reset to 0.
+"""
+class User:
+
+    def __init__(self, first_name: str, last_name: str, date_of_birth : str) -> None:
+        self.first_name : str = first_name
+        self.last_name : str = last_name
+        self.date_of_birth : str = date_of_birth
+        self.login_attempts : int = 0
+
+    def describe_user(self):
+        print(f"Name= {self.first_name}, last name= {self.last_name}, date of birth = {self.date_of_birth}")
+
+    def greet_user(self):
+        print(f"Hello, {self.first_name}, how are you?")
+    
+    def increment_login_attempts(self):
+        self.login_attempts += 1
+
+    def reset_login_attempts(self):
+        self.login_attempts = 0
+
+user1: User = User(first_name="Riccardo",last_name="Giacalone",date_of_birth="28/06/1996")
+user1.increment_login_attempts()
+user1.increment_login_attempts()
+user1.increment_login_attempts()
+print(user1.login_attempts)
+user1.reset_login_attempts()
+print(user1.login_attempts)
+user1.describe_user()
+user1.greet_user()
+
+print("---------------------------------------")
+

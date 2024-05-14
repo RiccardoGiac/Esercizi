@@ -1,4 +1,7 @@
 
+zookeepers_global : list = []
+fences_global: list = []
+
 class Animal:
 
     def __init__(self,name: str,species: str,age: int,height: float,width: float,preferred_habitat: str):
@@ -19,6 +22,7 @@ class Fence:
         self.temperature : float = temperature
         self.habitat : str = habitat
         self.animals_inside : list[Animal] = []
+        fences_global.append(self)
     
     def get_area_occupied(self):
         area_occ: float = 0
@@ -28,10 +32,12 @@ class Fence:
 
 class Zookeeper:
 
+
     def __init__(self,name: str,surname: str,id: str):
         self.name : str = name
         self.surname : str = surname
-        self.id : str = id 
+        self.id : str = id
+        zookeepers_global.append(self)
 
     def add_animal(self,animal:Animal,fence:Fence):
         if fence.area - animal.area >= 0 and animal.preferred_habitat.casefold() == fence.habitat.casefold() and not animal.fence:
@@ -78,17 +84,20 @@ class Zookeeper:
         
 class Zoo:
 
-    def __init__(self,fences: Fence, zoo_keepers: Zookeeper):
-        self.fences : Fence = fences
-        self.zoo_keepers : Zookeeper = zoo_keepers
+    def __init__(self,fences: list[Fence], zoo_keepers: list[Zookeeper]):
+        self.fences : list[Fence] = fences
+        self.zoo_keepers : list[Zookeeper] = zoo_keepers
+        self.animals : list [Animal] = fences.animals_inside
 
+    
     def describe_zoo(self):
         pass
+            
 
     ######## TESTS #############
     a1 : Animal = Animal("pippo", "lupo",5, 950, 1, "Mountain")
     a2 : Animal = Animal("rock", "aquila", 2, 7, 10,"mountain")
-    f1 : Fence = Fence(1000,20,"Mountain")
+    f1 : Fence = Fence(1000,10,"Mountain")
     zk1: Zookeeper = Zookeeper("Aldo", "Baglio", "135G")
     print(a1.area)
     zk1.add_animal(a1,f1)
@@ -97,3 +106,4 @@ class Zoo:
     f2: Fence = Fence(2000,30,"Savana")
     print(zk1.clean(f1))
     print(f1.get_area_occupied())
+    print(zookeepers_global.pop(0).name) #prova describe con questo?

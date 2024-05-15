@@ -58,6 +58,7 @@ class Zookeeper:
     def feed(self,animal:Animal):
         animal_area_after: float = round(animal.area + (2 * animal.area) / 100,3)
         if (animal.fence and (animal.fence.area + animal.area) - animal_area_after >= 0) or not animal.fence:  #qui toglie quel 2% dell' area dell'animale dall'area residua della fence
+            animal.fence.area = (animal.fence.area + animal.area) - animal_area_after
             animal.area = animal_area_after
             print(animal_area_after)
             animal.health = round(animal.health + animal.health /100,3)
@@ -84,26 +85,34 @@ class Zookeeper:
         
 class Zoo:
 
-    def __init__(self,fences: list[Fence], zoo_keepers: list[Zookeeper]):
+    def __init__(self, fences : list[Fence] = fences_global, zoo_keepers : list[Zookeeper]= zookeepers_global) -> None:
         self.fences : list[Fence] = fences
-        self.zoo_keepers : list[Zookeeper] = zoo_keepers
-        self.animals : list [Animal] = fences.animals_inside
+        self.zoo_keepers : list [Zookeeper] = zoo_keepers
+        
 
-    
     def describe_zoo(self):
-        pass
+        s : str = ""
+        s+= f"Guardians:\n"
+        for zk in self.zoo_keepers:
+            s+= zookeepers_global.__str__
+        return s
             
 
-    ######## TESTS #############
-    a1 : Animal = Animal("pippo", "lupo",5, 950, 1, "Mountain")
-    a2 : Animal = Animal("rock", "aquila", 2, 7, 10,"mountain")
-    f1 : Fence = Fence(1000,10,"Mountain")
-    zk1: Zookeeper = Zookeeper("Aldo", "Baglio", "135G")
-    print(a1.area)
-    zk1.add_animal(a1,f1)
-    zk1.feed(a1)
-    zk1.add_animal(a2,f1)
-    f2: Fence = Fence(2000,30,"Savana")
-    print(zk1.clean(f1))
-    print(f1.get_area_occupied())
-    print(zookeepers_global.pop(0).name) #prova describe con questo?
+######## TESTS #############
+a1 : Animal = Animal("pippo", "lupo",5, 950, 1, "Mountain")
+a2 : Animal = Animal("rock", "aquila", 2, 7, 10,"mountain")
+f1 : Fence = Fence(1000,10,"Mountain")
+zk1: Zookeeper = Zookeeper("Aldo", "Baglio", "135G")
+print(a1.area)
+zk1.add_animal(a1,f1)
+zk1.feed(a1)
+zk1.add_animal(a2,f1)
+f2: Fence = Fence(2000,30,"Savana")
+print(zk1.clean(f1))
+print(f1.get_area_occupied())
+print(zookeepers_global.pop(0).name) #prova describe con questo?
+print(a1.fence.area)
+zoo1 : Zoo = Zoo([fences_global],[zookeepers_global])
+print(zoo1.describe_zoo())
+#Fai __str__ per le classi e stampale in describe
+#testa l'area delle fence rimanente con due animali

@@ -52,6 +52,16 @@ def aggrega_voti(voti: list[dict]) -> dict[str:list[int]]:
     # cancella pass e scrivi il tuo codice
     new_dict : dict = {}
     
+    for s in voti:
+        nome = s["name"]
+        voto = s["voto"]
+        
+        if nome in new_dict:
+            new_dict[nome].append(voto)
+        else:
+            new_dict[nome] = [voto]  # ---> inizia a creare una lista se non è presente il nome in new dict
+
+    return new_dict
 
 """
 Scrivi una funzione che accetti un dizionario di prodotti con i prezzi e 

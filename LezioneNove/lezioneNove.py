@@ -20,3 +20,6 @@ def complex_statistical_function(x,distrubuition_type, **kwargs):
 
 complex_statistical_function(x=1.0, distrubuition_type="geometric",p=5.0)
 complex_statistical_function(x=2.0, distrubuition_type="poisson",lambda_1 = 5.0)
+
+###########################################
+

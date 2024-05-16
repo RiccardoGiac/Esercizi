@@ -1,7 +1,4 @@
 
-zookeepers_global : list = []
-fences_global: list = []
-
 class Animal:
 
     def __init__(self,name: str,species: str,age: int,height: float,width: float,preferred_habitat: str):
@@ -15,20 +12,21 @@ class Animal:
         self.area : float = round(width * height,3)
         self.fence : Fence = None
     
+    def __str__(self) -> str:
+        return f"Animal(name={self.name},species={self.species},age={self.age})"
+
 class Fence:
 
     def __init__(self,area: float,temperature: float,habitat: str):
-        self.area : float = area
+        self.area : float = area 
         self.temperature : float = temperature
         self.habitat : str = habitat
         self.animals_inside : list[Animal] = []
-        fences_global.append(self)
-    
-    def get_area_occupied(self):
-        area_occ: float = 0
-        for animal in self.animals_inside:
-            area_occ += animal.area
-        return area_occ
+        self.tot_area : float = area
+        
+        
+    def __str__(self) -> str:
+        return f"Fence(area={self.tot_area},temperature={self.temperature},habitat={self.habitat})"
 
 class Zookeeper:
 
@@ -37,15 +35,14 @@ class Zookeeper:
         self.name : str = name
         self.surname : str = surname
         self.id : str = id
-        zookeepers_global.append(self)
 
     def add_animal(self,animal:Animal,fence:Fence):
-        if fence.area - animal.area >= 0 and animal.preferred_habitat.casefold() == fence.habitat.casefold() and not animal.fence:
+        if fence.area - animal.area >= 0 and animal.preferred_habitat.casefold() == fence.habitat.casefold() and animal.fence == None:
             fence.area -= animal.area
             fence.animals_inside.append(animal)
             animal.fence = fence
         else:
-            print(f"Cannot add {animal.name} in this fence.")
+            print("Cannot add animal")
 
     def remove_animal(self,animal:Animal,fence:Fence):
         if animal in fence.animals_inside:
@@ -54,65 +51,80 @@ class Zookeeper:
         else:
             print("Animal is not in this fence")
 
-
     def feed(self,animal:Animal):
         animal_area_after: float = round(animal.area + (2 * animal.area) / 100,3)
-        if (animal.fence and (animal.fence.area + animal.area) - animal_area_after >= 0) or not animal.fence:  #qui toglie quel 2% dell' area dell'animale dall'area residua della fence
-            animal.fence.area = (animal.fence.area + animal.area) - animal_area_after
+        if (animal.fence and (animal.fence.area + animal.area) - animal_area_after >= 0) or not animal.fence:  
+            animal.fence.area = (animal.fence.area + animal.area) - animal_area_after                          #qui toglie quel 2% dell' area dell'animale dall'area residua della fence
             animal.area = animal_area_after
-            print(animal_area_after)
             animal.health = round(animal.health + animal.health /100,3)
-            print(animal.health)
         else:
-            print("Cannot feed the animal.")
-            
-
+            print("Cannot feed the animal.") 
 
     def clean(self,fence:Fence)-> float:
-    
-        area_tot : float = 0
-       
-        area_tot = fence.area + fence.get_area_occupied() #perchè fence area viene usata anche in remove
-                                    #quindi per trovare area tot -> fence.area + area occ da animali
-                                    #fence.area è area residua
-        if area_tot == 0:
-            return fence.area + fence.get_area_occupied()
+        sum_area_animals: float = 0
+        if fence.area == 0:
+            return fence.tot_area
         else:
-            return round(fence.get_area_occupied() / fence.area, 3)
+            for a in fence.animals_inside:
+                sum_area_animals += a.area
+            return round(sum_area_animals / fence.area, 3)
+        
+    def __str__(self) -> str:
+        return f"ZooKeeper(name={self.name},surname={self.surname},id={self.id})"
+                   
 
-        
-            
-        
 class Zoo:
-
-    def __init__(self, fences : list[Fence] = fences_global, zoo_keepers : list[Zookeeper]= zookeepers_global) -> None:
+    def __init__(self, fences : list[Fence], zoo_keepers : list[Zookeeper] ) -> None:
         self.fences : list[Fence] = fences
         self.zoo_keepers : list [Zookeeper] = zoo_keepers
-        
-
+    
     def describe_zoo(self):
-        s : str = ""
-        s+= f"Guardians:\n"
-        for zk in self.zoo_keepers:
-            s+= zookeepers_global.__str__
-        return s
-            
+        print("Guardians:")
+        for k in self.zoo_keepers:
+            print(f"{k}\n")
+        print("Fences:")
+        for f in self.fences:
+            print(f"{f}\n")
+            print("With animals:")
+            if f.animals_inside:
+                for j in f.animals_inside:  
+                     print(j)
+            else:
+                print("Fence is empty.")
+            print("\n" + "#" * 30)
 
-######## TESTS #############
-a1 : Animal = Animal("pippo", "lupo",5, 950, 1, "Mountain")
-a2 : Animal = Animal("rock", "aquila", 2, 7, 10,"mountain")
-f1 : Fence = Fence(1000,10,"Mountain")
-zk1: Zookeeper = Zookeeper("Aldo", "Baglio", "135G")
+######TEST########VEDI SE CI SONO ALTRI TEST DA FARE SE NO MANDA
+
+
+
+zk: Zookeeper = Zookeeper("Luigi", "fgas","131")
+zk2: Zookeeper = Zookeeper("Marco", "afdes","545")
+a2: Animal = Animal("animalo2","animala",5,20,5,"mountain")
+a1: Animal = Animal("animalo","animala",4,5,6,"Foresta")
+a3: Animal = Animal("animalo3", "animala", 5,2,5,"Foresta")
+f1: Fence = Fence(2000,20,"Foresta")
+f2: Fence = Fence(300,10,"Mountain")
+zk.add_animal(a1,f1)
+zk2.add_animal(a2,f2)
+
+print("--------Test clean-------")
+print(zk.clean(f1))
+print("-------------------------")
+zoo1 : Zoo = Zoo([f1,f2],[zk])
+zoo2 : Zoo = Zoo([f2],[zk2])
+zoo1.describe_zoo()
+print("zoo 2 -------")
+zoo2.describe_zoo()
+print("TEST HEALTH E AREA ANIMALE DOPO FEED")
+print(a1.health)
 print(a1.area)
-zk1.add_animal(a1,f1)
-zk1.feed(a1)
-zk1.add_animal(a2,f1)
-f2: Fence = Fence(2000,30,"Savana")
-print(zk1.clean(f1))
-print(f1.get_area_occupied())
-print(zookeepers_global.pop(0).name) #prova describe con questo?
-print(a1.fence.area)
-zoo1 : Zoo = Zoo([fences_global],[zookeepers_global])
-print(zoo1.describe_zoo())
-#Fai __str__ per le classi e stampale in describe
-#testa l'area delle fence rimanente con due animali
+zk.feed(a1)
+print(a1.health)
+print(a1.area)
+print("--------------------------zooooo1")
+zk.add_animal(a3,f1)
+zk.add_animal(a3,f2)
+
+zoo1.describe_zoo()
+
+

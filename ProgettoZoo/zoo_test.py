@@ -1,4 +1,3 @@
-
 class Animal:
 
     def __init__(self,name: str,species: str,age: int,height: float,width: float,preferred_habitat: str):
@@ -110,7 +109,7 @@ zk2.add_animal(a2,f2)
 print("--------Test clean-------")
 print(zk.clean(f1))
 print("-------------------------")
-zoo1 : Zoo = Zoo([f1],[zk])
+zoo1 : Zoo = Zoo([f1,f2],[zk])
 zoo2 : Zoo = Zoo([f2],[zk2])
 zoo1.describe_zoo()
 print("zoo 2 -------")
@@ -123,7 +122,6 @@ print(a1.health)
 print(a1.area)
 print("--------------------------zooooo1")
 zk.add_animal(a3,f1)
+zk.add_animal(a3,f2)
 
 zoo1.describe_zoo()
-
-

@@ -93,38 +93,6 @@ class Zoo:
                 print("Fence is empty.")
             print("\n" + "#" * 30)
 
-######TEST########VEDI SE CI SONO ALTRI TEST DA FARE SE NO MANDA
 
-
-
-zk: Zookeeper = Zookeeper("Luigi", "fgas","131")
-zk2: Zookeeper = Zookeeper("Marco", "afdes","545")
-a2: Animal = Animal("animalo2","animala",5,20,5,"mountain")
-a1: Animal = Animal("animalo","animala",4,5,6,"Foresta")
-a3: Animal = Animal("animalo3", "animala", 5,2,5,"Foresta")
-f1: Fence = Fence(2000,20,"Foresta")
-f2: Fence = Fence(300,10,"Mountain")
-zk.add_animal(a1,f1)
-zk2.add_animal(a2,f2)
-
-print("--------Test clean-------")
-print(zk.clean(f1))
-print("-------------------------")
-zoo1 : Zoo = Zoo([f1,f2],[zk])
-zoo2 : Zoo = Zoo([f2],[zk2])
-zoo1.describe_zoo()
-print("zoo 2 -------")
-zoo2.describe_zoo()
-print("TEST HEALTH E AREA ANIMALE DOPO FEED")
-print(a1.health)
-print(a1.area)
-zk.feed(a1)
-print(a1.health)
-print(a1.area)
-print("--------------------------zooooo1")
-zk.add_animal(a3,f1)
-zk.add_animal(a3,f2)
-
-zoo1.describe_zoo()
 
 

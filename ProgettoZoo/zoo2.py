@@ -11,6 +11,9 @@ class Animal:
         self.health : float= round(100*(1/age),3)
         self.area : float = round(width * height,3)
         self.fence : Fence = None
+    
+    def __str__(self) -> str:
+        return f"Animal(name={self.name},species={self.species},age={self.age})"
 
 class Fence:
 
@@ -21,13 +24,6 @@ class Fence:
         self.animals_inside : list[Animal] = []
         self.tot_area : float = area
         
-
-    def get_animals_inside(self):
-        if self.animals_inside:
-            for a in self.animals_inside:
-                print(f"Animal(name={a.name},species={a.species},age={a.age})")                                 
-        else:
-            print("Fence is empty")
         
     def __str__(self) -> str:
         return f"Fence(area={self.tot_area},temperature={self.temperature},habitat={self.habitat})"
@@ -90,10 +86,14 @@ class Zoo:
         for f in self.fences:
             print(f"{f}\n")
             print("With animals:")
-            print(f.get_animals_inside())
+            if f.animals_inside:
+                for j in f.animals_inside:  
+                     print(j)
+            else:
+                print("Fence is empty.")
             print("\n" + "#" * 30)
 
-######TEST########
+######TEST########VEDI SE CI SONO ALTRI TEST DA FARE SE NO MANDA
 
 zk: Zookeeper = Zookeeper("Luigi", "fgas","131")
 zk2: Zookeeper = Zookeeper("Marco", "afdes","545")

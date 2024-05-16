@@ -15,7 +15,7 @@ class Animal:
 class Fence:
 
     def __init__(self,area: float,temperature: float,habitat: str):
-        self.area : float = area
+        self.area : float = area 
         self.temperature : float = temperature
         self.habitat : str = habitat
         self.animals_inside : list[Animal] = []
@@ -25,9 +25,9 @@ class Fence:
     def get_animals_inside(self):
         if self.animals_inside:
             for a in self.animals_inside:
-                return f"Animal(name={a.name},species={a.species},age={a.age})"
+                print(f"Animal(name={a.name},species={a.species},age={a.age})")                                 
         else:
-            return "Fence is empty"
+            print("Fence is empty")
         
     def __str__(self) -> str:
         return f"Fence(area={self.tot_area},temperature={self.temperature},habitat={self.habitat})"
@@ -45,6 +45,8 @@ class Zookeeper:
             fence.area -= animal.area
             fence.animals_inside.append(animal)
             animal.fence = fence
+        else:
+            print("Cannot add animal")
 
     def remove_animal(self,animal:Animal,fence:Fence):
         if animal in fence.animals_inside:
@@ -95,14 +97,17 @@ class Zoo:
 
 zk: Zookeeper = Zookeeper("Luigi", "fgas","131")
 zk2: Zookeeper = Zookeeper("Marco", "afdes","545")
-a2: Animal = Animal("animalo2","animala",5,20,5,"Foresta")
+a2: Animal = Animal("animalo2","animala",5,20,5,"mountain")
 a1: Animal = Animal("animalo","animala",4,5,6,"Foresta")
+a3: Animal = Animal("animalo3", "animala", 5,2,5,"Foresta")
 f1: Fence = Fence(2000,20,"Foresta")
-f2: Fence = Fence(300,10,"Mount")
+f2: Fence = Fence(300,10,"Mountain")
 zk.add_animal(a1,f1)
 zk2.add_animal(a2,f2)
 
+print("--------Test clean-------")
 print(zk.clean(f1))
+print("-------------------------")
 zoo1 : Zoo = Zoo([f1],[zk])
 zoo2 : Zoo = Zoo([f2],[zk2])
 zoo1.describe_zoo()
@@ -114,4 +119,9 @@ print(a1.area)
 zk.feed(a1)
 print(a1.health)
 print(a1.area)
+print("--------------------------zooooo1")
+zk.add_animal(a3,f1)
+
+zoo1.describe_zoo()
+
 

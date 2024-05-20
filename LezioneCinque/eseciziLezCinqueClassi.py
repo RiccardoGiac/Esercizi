@@ -141,3 +141,221 @@ user1.greet_user()
 
 print("---------------------------------------")
 
+"""9-6. Ice Cream Stand: An ice cream stand is a specific kind of restaurant. 
+Write a class called IceCreamStand that inherits from the Restaurant 
+class you wrote in Exercise 9-1  or Exercise 9-4. Either version of 
+the class will work; just pick the one you like better. Add an attribute 
+called flavors that stores a list of ice cream flavors. 
+Write a method that displays these flavors. Create an instance of 
+IceCreamStand, and call this method. 
+
+"""
+
+class IceCreamStand(Restaurant):
+
+    def __init__(self, restaurant_name: str, cuisine_type: str,flavors: list[str]) -> None:
+        super().__init__(restaurant_name, cuisine_type)
+
+        self.flavors : list[str] = flavors
+
+    def display_flavor(self):
+        print(self.flavors)
+
+icecream: IceCreamStand = IceCreamStand("Bagliori","Gelateria",["pistacchio","cioccolato","limone"])
+icecream.display_flavor()
+
+print("---------------------------------------")
+
+"""
+9-7. Admin: An administrator is a special kind of user. 
+Write a class called Admin that inherits from the User class you 
+wrote in Exercise 9-3 or Exercise 9-5. Add an attribute, privileges, 
+that stores a list of strings like "can add post", "can delete post", 
+"can ban user", and so on. Write a method called show_privileges() 
+that lists the administrator’s set of privileges. 
+Create an instance of Admin, and call your method. 
+"""
+
+class Admin(User):
+
+    def __init__(self, 
+                 first_name: str, 
+                 last_name: str, 
+                 date_of_birth: str,
+                 ) -> None:
+        super().__init__(first_name, last_name, date_of_birth)
+
+        self.privileges: list[str] = ["can delete posts", "can add posts"]
+        
+    def show_privileges(self):
+
+        print(self.privileges)
+
+
+
+admin: Admin = Admin("Riccardo","Giaca","19/09/1998")
+admin.show_privileges()
+
+
+print("---------------------------------------")
+
+"""
+9-8. Privileges: Write a separate Privileges class. 
+The class should have one attribute, privileges, that stores 
+a list of strings as described in Exercise 9-7. 
+Move the show_privileges() method to this class. 
+Make a Privileges instance as an attribute in the Admin class. 
+Create a new instance of Admin and use your method to show its privileges.
+"""
+
+class Admin(User):
+
+    def __init__(self, 
+                 first_name: str, 
+                 last_name: str, 
+                 date_of_birth: str,
+                 ) -> None:
+        super().__init__(first_name, last_name, date_of_birth)
+
+        self.privileges: Privileges = Privileges()
+
+class Privileges:
+
+    def __init__(self, privileges: list[str]=[]) -> None:
+        self.privileges : list[str] = privileges
+    
+    def show_privileges(self):
+        print(self.privileges)
+
+admin1 : Admin = Admin("Giacomo","gsegeg","21/03/1993")
+admin1.privileges.privileges = ["can add post", "can delete post"]
+admin1.privileges.show_privileges()
+
+print("---------------------------------------")
+
+"""
+9-10. Imported Restaurant: Using your latest Restaurant class, 
+store it in a module. Make a separate file that imports Restaurant. 
+Make a Restaurant instance, and call one of Restaurant’s methods to 
+show that the import statement is working properly.
+"""
+###########################
+
+"""
+9-11. Imported Admin: Start with your work from Exercise 9-8. 
+Store the classes User, Privileges, and Admin in one module. 
+Create a separate file, make an Admin instance, and 
+call show_privileges() to show that everything is working correctly.
+"""
+###########################
+
+"""
+9-12. Multiple Modules: Store the User class in one module, 
+and store the Privileges and Admin classes in a separate module. 
+In a separate file, create an Admin instance and call show_privileges() 
+to show that everything is still working correctly.
+"""
+##############DA FARE###############
+
+"""
+9-13. Dice: Make a class Die with one attribute called sides, 
+which has a default value of 6. Write a method called roll_die() 
+that prints a random number between 1 and the number of sides 
+the die has. Make a 6-sided die and roll it 10 times. 
+Make a 10-sided die and a 20-sided die. Roll each die 10 times.
+"""
+from random import randint
+class Die:
+
+    def __init__(self,sides:int = 6) -> None:
+        self.sides:int = sides
+
+    def roll_die(self):
+        print(randint(1,self.sides))
+    
+die6:Die = Die()
+die6.roll_die()
+print("10 rolls 6 sides:\n")
+i : int = 0
+while i < 10:
+    die6.roll_die()
+    print("---")
+    i += 1
+
+die10: Die = Die(10)
+print("10 rolls 10 sides:\n")
+i = 0
+while i < 10:
+    die10.roll_die()
+    print("---")
+    i += 1
+
+die20: Die = Die(20)
+print("10 rolls 20 sides:\n")
+i = 0
+while i < 10:
+    die20.roll_die()
+    print("---")
+    i += 1
+print("---------------------------------------")
+
+"""
+9-14. Lottery: Make a list or tuple containing a series of 10 numbers 
+and 5 letters. Randomly select 4 numbers or letters from the list and 
+print a message saying that any ticket matching these 4 numbers or 
+letters wins a prize.
+"""
+from random import choice
+print("\n LOTTERIA\n")
+
+lottery: list = [1,2,3,4,5,6,7,8,9,10,"a","b","c","d","e"]
+winner_list : list = []
+conta: int = 0
+while conta <= 4:
+    (winner_list.append(choice(lottery)))
+    conta += 1
+print(winner_list)
+
+print(f"The winning characters are:\n")
+for i in winner_list:
+    print(f"{i},\n")
+
+print(f"Here's the full ticket : {winner_list}")
+
+print("---------------------------------------")
+
+"""
+9-15. Lottery Analysis: You can use a loop to see how hard it might be 
+to win the kind of lottery you just modeled. Make a list or tuple 
+called my_ticket. Write a loop that keeps pulling numbers until 
+your ticket wins. Print a message reporting how many times the 
+loop had to run to give you a winning ticket.
+"""
+
+my_ticket : list = [4,2,"b",5,"d"]
+
+winning_list : list = []
+
+contatore : int = 0
+
+while my_ticket != winning_list:
+    winning_list.append(choice(lottery))
+    if len(winning_list) > 5:
+        winning_list.clear()
+        contatore += 1
+
+print(winning_list)
+
+print(f"Hai vinto! La lotteria è stata estratta {contatore} volte")
+    
+
+
+
+
+
+
+
+
+
+        
+

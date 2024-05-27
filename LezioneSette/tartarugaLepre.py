@@ -16,18 +16,19 @@ import random
 #          Piccolo balzo(30%): avanza 1 quadrato
 #          Piccola scivolata(20%): arretra 2 quadrati    
 
-percorso: list[int] = [" " for i in range(1,71)]
+percorso: list[str] = [" " for i in range(1,71)]
 
 
 lepre: int = 1
 tartaruga: int = 1
 tempo: int = 0
 
-def movimento_tartaruga(tartaruga:int):
+
+def movimento_tartaruga(tartaruga:int)-> int:
     mov: int = random.randint(1,10)
     if mov <= 5:
         tartaruga += 3
-        print(f"Passo veoloce! +3 quadrati ({tartaruga})")
+        print(f"Passo veloce! +3 quadrati ({tartaruga})")
     if mov >=6 and mov <= 7 and tartaruga > 6:
         tartaruga -= 6
         print(f"Scivolata! -6 quadrati ({tartaruga})")
@@ -66,13 +67,24 @@ print("BANG!!!! AND THEY'RE OFF!!!")
 
 
 while lepre <= len(percorso) and tartaruga <= len(percorso):
+
+    
     
     print(f"Tempo: {tempo}\nLepre: ")
     lepre = movimento_lepre(lepre)
     print(f"\nTartaruga: ")
     tartaruga = movimento_tartaruga(tartaruga)
-    print("----------")
+    
     tempo += 1
+    if lepre < len(percorso) and tartaruga < len(percorso):
+        if lepre == tartaruga:
+            percorso[lepre] = "OUCH!!!"
+        else:
+            percorso[lepre] = "L"
+            percorso[tartaruga] = "T"
+        print(percorso)
+        percorso[lepre] = " "
+        percorso[tartaruga] = " "
 
 if lepre > tartaruga:
     print("LA LEPRE HA VINTO!!!")

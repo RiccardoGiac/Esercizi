@@ -16,7 +16,7 @@ import random
 #          Piccolo balzo(30%): avanza 1 quadrato
 #          Piccola scivolata(20%): arretra 2 quadrati    
 
-percorso: list[str] = [" " for i in range(1,71)]
+percorso: list[str] = ["_" for i in range(1,71)]
 
 
 lepre: int = 1
@@ -83,8 +83,8 @@ while lepre <= len(percorso) and tartaruga <= len(percorso):
             percorso[lepre] = "L"
             percorso[tartaruga] = "T"
         print(percorso)
-        percorso[lepre] = " "
-        percorso[tartaruga] = " "
+        percorso[lepre] = "_"
+        percorso[tartaruga] = "_"
 
 if lepre > tartaruga:
     print("LA LEPRE HA VINTO!!!")

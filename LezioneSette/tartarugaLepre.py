@@ -23,23 +23,41 @@ lepre: int = 1
 tartaruga: int = 1
 tempo: int = 0
 pioggia: bool = False
+stamina_l: int = 100
+stamina_t: int = 100
 
 
-def movimento_tartaruga(tartaruga:int,pioggia: bool)-> int:
+def movimento_tartaruga(tartaruga:int,pioggia: bool,stamina_t: int)-> int:
     mov: int = random.randint(1,10)
     if pioggia == False:
-        if mov <= 5:
+        if mov <= 5 and stamina_t >= 5:
             tartaruga += 3
-            print(f"Passo veloce! +3 quadrati ({tartaruga})")
-        if mov >=6 and mov <= 7 and tartaruga > 6:
+            stamina_t -= 5
+            print(f"Passo veloce! +3 quadrati ({tartaruga}, s={stamina_t})")
+        elif mov <= 5 and stamina_t < 5:
+            print(f"La tartaruga stanca si riposa +10 stamina s={stamina_t}")
+            stamina_t += 10
+        if mov >=6 and mov <= 7 and tartaruga > 6 and stamina_t >= 10:
             tartaruga -= 6
-            print(f"Scivolata! -6 quadrati ({tartaruga})")
-        elif mov >= 6 and mov <= 7 and tartaruga <= 6:
+            stamina_t -= 10
+            print(f"Scivolata! -6 quadrati ({tartaruga}, s={stamina_t})")
+        elif mov >= 6 and mov <= 7 and tartaruga <= 6 and stamina_t >= 10:
             tartaruga = 1
-            print(f"Scivolata! torna al primo quadrato!")
-        if mov >= 8 and mov <= 10:
+            stamina_t -= 10
+            print(f"Scivolata! torna al primo quadrato! s={stamina_t}")
+        elif mov >= 6 and mov <= 7 and tartaruga <= 6 and stamina_t < 10:
+            print(f"La tartaruga stanca si riposa +10 stamina s={stamina_t}")
+            stamina_t += 10
+        elif mov >= 6 and mov <= 7 and tartaruga > 6 and stamina_t < 10:
+            print(f"La tartaruga stanca si riposa +10 stamina s={stamina_t}")
+            stamina_t += 10
+        if mov >= 8 and mov <= 10 and stamina_t >= 3:
             tartaruga += 1
-            print(f"Passo lento! +1 quadrato ({tartaruga})")
+            stamina_t -= 3
+            print(f"Passo lento! +1 quadrato ({tartaruga} s={stamina_t})")
+        elif mov >= 8 and mov <= 10 and stamina_t < 3:
+            print(f"La tartaruga stanca si riposa +10 stamina s= {stamina_t}")
+            stamina_t += 10
     else:
         if mov <= 5:
             tartaruga += 2
@@ -52,9 +70,9 @@ def movimento_tartaruga(tartaruga:int,pioggia: bool)-> int:
             print(f"Scivolata sotto la pioggia! torna al primo quadrato!")
         if mov >= 8 and mov <= 10:
             print("Con la pioggia la tartaruga è così lenta da restare nella stessa casella")
-    return tartaruga
+    return tartaruga,stamina_t
 
-def movimento_lepre(lepre: int,pioggia: bool):
+def movimento_lepre(lepre: int,pioggia: bool,stamina_l: int):
     mov: int = random.randint(1,10)
     if  pioggia == False:
         if mov == 1 and lepre > 12:
@@ -117,9 +135,9 @@ while lepre <= len(percorso) and tartaruga <= len(percorso):
         
     
     print(f"Tempo: {tempo}\nLepre: ")
-    lepre = movimento_lepre(lepre,pioggia)
+    lepre = movimento_lepre(lepre,pioggia,stamina_l)
     print(f"\nTartaruga: ")
-    tartaruga = movimento_tartaruga(tartaruga,pioggia)
+    tartaruga,stamina_t = movimento_tartaruga(tartaruga,pioggia,stamina_t)
 
     
     if tempo % 10 == 0:

@@ -22,46 +22,90 @@ percorso: list[str] = ["_" for i in range(1,71)]
 lepre: int = 1
 tartaruga: int = 1
 tempo: int = 0
+pioggia: bool = False
 
 
-def movimento_tartaruga(tartaruga:int)-> int:
+def movimento_tartaruga(tartaruga:int,pioggia: bool)-> int:
     mov: int = random.randint(1,10)
-    if mov <= 5:
-        tartaruga += 3
-        print(f"Passo veloce! +3 quadrati ({tartaruga})")
-    if mov >=6 and mov <= 7 and tartaruga > 6:
-        tartaruga -= 6
-        print(f"Scivolata! -6 quadrati ({tartaruga})")
-    elif mov >= 6 and mov <= 7 and tartaruga <= 6:
-        tartaruga = 1
-        print(f"Scivolata! torna al primo quadrato!")
-    if mov >= 8 and mov <= 10:
-        tartaruga += 1
-        print(f"Passo lento! +1 quadrato ({tartaruga})")
+    if pioggia == False:
+        if mov <= 5:
+            tartaruga += 3
+            print(f"Passo veloce! +3 quadrati ({tartaruga})")
+        if mov >=6 and mov <= 7 and tartaruga > 6:
+            tartaruga -= 6
+            print(f"Scivolata! -6 quadrati ({tartaruga})")
+        elif mov >= 6 and mov <= 7 and tartaruga <= 6:
+            tartaruga = 1
+            print(f"Scivolata! torna al primo quadrato!")
+        if mov >= 8 and mov <= 10:
+            tartaruga += 1
+            print(f"Passo lento! +1 quadrato ({tartaruga})")
+    else:
+        if mov <= 5:
+            tartaruga += 2
+            print(f"Passo veloce sotto la pioggia! +2 quadrati ({tartaruga})")
+        if mov >= 6 and mov <= 7 and tartaruga > 7:
+            tartaruga -= 7
+            print(f"Scivolata sotto la pioggia! -7 quadrati ({tartaruga})")    
+        elif mov >= 6 and mov <=7 and tartaruga <=7:
+            tartaruga = 1
+            print(f"Scivolata sotto la pioggia! torna al primo quadrato!")
+        if mov >= 8 and mov <= 10:
+            print("Con la pioggia la tartaruga è così lenta da restare nella stessa casella")
     return tartaruga
 
-def movimento_lepre(lepre: int):
+def movimento_lepre(lepre: int,pioggia: bool):
     mov: int = random.randint(1,10)
-    if mov == 1 and lepre > 12:
-        lepre -= 12
-        print(f"Grande Scivolata! -12 quadrati {lepre}")
-    elif mov == 1 and lepre <= 12:
-        lepre = 1
-        print(f"Scivolata! Torna alla prima posizione")
-    if mov > 1 and mov <= 3:
-        print("Riposo! La lepre si mette a dormire e non avanza")
-    if mov > 3 and mov <= 5:
-        lepre += 9
-        print(f"Grande balzo! +9 quadrati ({lepre})")
-    if mov > 5 and mov <= 8:
-        lepre += 1
-        print(f"Piccolo balzo! +1 quadrato ({lepre})")
-    if mov > 8 and mov <= 10 and lepre > 1:
-        lepre -= 2
-        print(f"Piccola scivolata! -1 quadrato")
-    elif mov > 8 and mov <= 10 and lepre == 1:
-        print(f"Piccola scivolata! Resta al primo quadrato!")
+    if  pioggia == False:
+        if mov == 1 and lepre > 12:
+            lepre -= 12
+            print(f"Grande Scivolata! -12 quadrati {lepre}")
+        elif mov == 1 and lepre <= 12:
+            lepre = 1
+            print(f"Scivolata! Torna alla prima posizione")
+        if mov > 1 and mov <= 3:
+            print("Riposo! La lepre si mette a dormire e non avanza")
+        if mov > 3 and mov <= 5:
+            lepre += 9
+            print(f"Grande balzo! +9 quadrati ({lepre})")
+        if mov > 5 and mov <= 8:
+            lepre += 1
+            print(f"Piccolo balzo! +1 quadrato ({lepre})")
+        if mov > 8 and mov <= 10 and lepre > 1:
+            lepre -= 2
+            print(f"Piccola scivolata! -2 quadrati")
+        elif mov > 8 and mov <= 10 and lepre == 1:
+            print(f"Piccola scivolata! Resta al primo quadrato!")
+    
+    else:
+        if mov == 1 and lepre > 14:
+            lepre -= 14
+            print(f"Grande Scivolata sotto la pioggia! -14 quadrati {lepre}")
+        elif mov == 1 and lepre <= 14:
+            lepre = 1
+            print(f"Scivolata sotto la pioggia! Torna alla prima posizione")
+        if mov > 1 and mov <= 3:
+            print("Riposo! La lepre si mette a dormire e non avanza")
+        if mov > 3 and mov <= 5:
+            lepre += 7
+            print(f"Grande balzo! +7 quadrati ({lepre})")
+        if mov > 5 and mov <= 8 and lepre > 1:
+            lepre -= 1
+            print(f"Piccolo balzo ma la tempesta spinge la lepre indietro! -1 quadrato ({lepre})")
+        elif mov > 5 and mov <= 8 and lepre == 1:
+            print(f"Piccolo balzo! La lepre scivola sul posto a causa della pioggia{lepre}")
+        if mov > 8 and mov <= 10 and lepre > 1:
+            lepre -= 4
+            print(f"Piccola scivolata sotto la pioggia! -4 quadrati")
+        elif mov > 8 and mov <= 10 and lepre == 1:
+            print(f"Piccola scivolata! Resta al primo quadrato!")
+
+    
     return lepre
+
+
+
+
 
 print("BANG!!!! AND THEY'RE OFF!!!")
 
@@ -70,10 +114,22 @@ while lepre <= len(percorso) and tartaruga <= len(percorso):
 
     
     
+        
+    
     print(f"Tempo: {tempo}\nLepre: ")
-    lepre = movimento_lepre(lepre)
+    lepre = movimento_lepre(lepre,pioggia)
     print(f"\nTartaruga: ")
-    tartaruga = movimento_tartaruga(tartaruga)
+    tartaruga = movimento_tartaruga(tartaruga,pioggia)
+
+    
+    if tempo % 10 == 0:
+
+        if pioggia == False:
+            print("INIZIA A PIOVERE...")
+            
+        else:
+            print("C'E' IL SOLE...")
+        pioggia = not pioggia
     
     tempo += 1
     if lepre < len(percorso) and tartaruga < len(percorso):

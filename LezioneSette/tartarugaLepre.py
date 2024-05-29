@@ -25,6 +25,10 @@ tempo: int = 0
 pioggia: bool = False
 stamina_l: int = 100
 stamina_t: int = 100
+d_ostacoli: dict[int:int] = {percorso[6]:-9, percorso[15]:-4, percorso[32]:-16,
+                             percorso[40]: -2, percorso[53]:-3, percorso[69]: -10}
+d_bonus: dict[int:int] = {percorso[2]:7, percorso[16]:10, percorso[25]:4,
+                          percorso[39]:3, percorso[55]:10,percorso[61]:7}
 
 
 def movimento_tartaruga(tartaruga:int,pioggia: bool,stamina_t: int)-> int:

@@ -203,6 +203,23 @@ while lepre <= len(percorso) and tartaruga <= len(percorso):
     print(f"\nTartaruga: ")
     tartaruga,stamina_t = movimento_tartaruga(tartaruga,pioggia,stamina_t)
 
+    for k in d_bonus:
+        if lepre == k:
+            lepre += k
+        if tartaruga == k:
+            tartaruga += k
+    
+    for k in d_ostacoli:
+        if lepre == k:
+            lepre += k
+        if tartaruga == k:
+            tartaruga += k
+
+    if lepre < 1:
+        lepre = 1
+    if tartaruga < 1:
+        tartaruga = 1
+
     
     if tempo % 10 == 0:
 

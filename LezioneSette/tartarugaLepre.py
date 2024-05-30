@@ -202,18 +202,21 @@ while lepre <= len(percorso) and tartaruga <= len(percorso):
     lepre,stamina_l = movimento_lepre(lepre,pioggia,stamina_l)
     print(f"\nTartaruga: ")
     tartaruga,stamina_t = movimento_tartaruga(tartaruga,pioggia,stamina_t)
-
+    
     for k in d_bonus:
         if lepre == k:
-            lepre += k
+            lepre += d_bonus[k]
+            print(f"Sembra che la lepre abbia preso un bonus! ({d_bonus[k]})")
         if tartaruga == k:
-            tartaruga += k
-    
+            tartaruga += d_bonus[k]
+            print(f"Sembra che la tartaruga abbia preso un bonus! ({d_bonus[k]})")
     for k in d_ostacoli:
         if lepre == k:
-            lepre += k
+            lepre += d_ostacoli[k]
+            print(f"La lepre ha preso un ostacolo! ({d_ostacoli[k]})")
         if tartaruga == k:
-            tartaruga += k
+            tartaruga += d_ostacoli[k]
+            print(f"La tartaruga ha preso un ostacolo ({d_ostacoli[k]})")
 
     if lepre < 1:
         lepre = 1

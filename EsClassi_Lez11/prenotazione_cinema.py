@@ -1,3 +1,4 @@
+#Riccardo Giacalone
 class Film:
 
     def __init__(self,titolo: str, durata:str) -> None:

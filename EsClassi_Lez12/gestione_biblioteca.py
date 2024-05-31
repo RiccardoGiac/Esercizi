@@ -39,13 +39,12 @@ class Biblioteca:
 
     def mostra_libri_disponibili(self):
         print("Ecco la lista di libri disponibili:\n")
+        
         for libro in self.lista_libri:
-            if libro.prestito == False:
-                print(libro.titolo)
-            elif libro.prestito == True:
-                continue
-            else:
-                print("Non ci sono libri disponibili.")
+                if libro.prestito == False:
+                    print(libro.titolo)
+                elif libro.prestito == True:
+                    print(f"{libro.titolo} non disponibile")
 
 libro1: Libro = Libro("Divina Commedia","Dante Alighieri",prestito=False)
 libro2: Libro = Libro("Promessi sposi","Alessandro Manzoni", prestito=False)
@@ -56,6 +55,8 @@ bbt1.mostra_libri_disponibili()
 bbt1.presta_libro("Divina Commedia")
 bbt1.mostra_libri_disponibili()
 bbt1.restituisci_libro("Divina Commedia")
+bbt1.mostra_libri_disponibili()
+bbt1.presta_libro("Divina Commedia")
 bbt1.mostra_libri_disponibili()
 
 

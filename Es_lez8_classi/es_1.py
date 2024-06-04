@@ -10,8 +10,7 @@ Then, create two subclasses Circle and Rectangle that implement the area and per
 
 class Shape(ABC):
 
-    def __init__(self) -> None:
-        super().__init__()
+    
 
     @abstractmethod
     def area(self):
@@ -37,7 +36,7 @@ class Circle(Shape):
         perimeter: float = (self.radius * 2) * PI
         return perimeter
     
-class Rectancle(Shape):
+class Rectangle(Shape):
 
     def  __init__(self, length:float, width:float) -> None:
         super().__init__()

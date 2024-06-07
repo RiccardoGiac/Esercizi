@@ -54,5 +54,30 @@ class Library:
         self.members: list[Member] = members
     
     def add_book(self, book: Book):
+        self.books.append(book)
         Library.total_books += 1
+
+    def remove_book(self,book: Book):
+        self.books.remove(book)
+        Library.total_books -= 1
+
+    def register_member(self, member:Member):
+        self.members.append(member)
+
+    def lend_book(self, book:Book, member:Member):
+        if book in self.books:
+            member.borrow_book(book)
+            self.books.remove(book)
+        else:
+            print(f"{book} is not in the Library")
+    
+    def __str__(self) -> str:
+        f"{self.books}, {self.members}"
+
+    @classmethod
+    def library_statistics(cls):
+        print(Library.total_books)
+
+    
+
     

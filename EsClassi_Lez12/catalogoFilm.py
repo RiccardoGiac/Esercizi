@@ -25,6 +25,8 @@ class MovieCatalog:
                 for e in self.m_dict[k]:
                     dir_list.append(e)
         return dir_list
+    
+ ########TESTS#######
 
 mvctlg1: MovieCatalog = MovieCatalog()
 mvctlg1.add_movie(director_name="S.Spielberg",movies=["Salvate il soldato Ryan", "Schindler's List"])

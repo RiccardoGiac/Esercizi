@@ -86,10 +86,46 @@ if __name__ == "__main__":
     plt.plot(cases, merge_sort_times, label="Merge")
     plt.plot(cases, bubble_sort_times, label="Bubble")
     plt.xscale("log")
+    plt.yscale("log")
     plt.legend()
     plt.show()
+
+class Timer:
+
+    def __enter__(self):
+        import time
+
+        self.time = time.time()
+
+    def __exit__(self,exc_type,exc_value,traceback):
+
+        import time
+        
+        print(f"Time elapsed: {time.time() - self.time}")
+
+        return False
+
+
+
+
+import random
+
+
+lista = [random.randint(0,100) for _ in range(1000)]
+
+with Timer():
+
+    mergeSort(lista)
+
+
+
+
+
+
+
+
 # class Esempio:
-    
+
 #     def __init__(self, name) -> None:
         
 #         self.__name = self.__checkName(name)

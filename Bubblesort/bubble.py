@@ -37,10 +37,19 @@ def merge(list_1: list[int], list_2: list[int]) -> list[int]:
 
             result[k] = list_2[j]
             j += 1
+            
+            if j == len(list_2):
+
+                return result[:k+1] + list_1[i:]
         
         else:
             result[k] = list[i]
             i += 1
+
+            if i == len(list_1):
+
+                return result[:k+1] + list_1[j:]
+
 
     return result
 

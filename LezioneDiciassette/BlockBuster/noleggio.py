@@ -16,4 +16,14 @@ class Noleggio:
             print(f"Il film scelto non è disponibile: {film.title}!")
             return False
 
+    def rentAMovie(self,film:Film,clientID:str):
+        if self.isAvaible(film):
+            self.film_list.remove(film)
+            if clientID not in self.rented_film:
+                self.rented_film[clientID] = []
+            self.rented_film[clientID].append(film)
+            print(f"Il cliente {clientID} ha noleggiato {film.title}!")
+        else:
+            print(f"Non è possibile noleggiare il film {film.title}!")
 
+    

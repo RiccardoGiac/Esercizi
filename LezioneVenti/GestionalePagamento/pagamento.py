@@ -26,3 +26,14 @@ class PagamentoContanti(Pagamento):
 
     def inPezziDa(self):
         
+        self.banconote: list = [500.0,200.0,100.0,50.0,20.0,10.0,5.0]
+        self.monete: list = [2.0,1.0,0.5,0.2,0.1,0.05,0.02,0.01]
+
+        
+        for e in self.banconote:
+            while self.importo > e:
+                self.importo - e
+                
+
+
+        

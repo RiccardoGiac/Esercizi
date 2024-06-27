@@ -79,14 +79,39 @@ print("############")
 
 def decorator(func):
 
-    def wrapper():
+    def wrapper(*args):
 
         import time
         start = time.time() #in questo modo calcola il tempo per eseguire
                             #la funzione func
-        func()
+        func(*args) #args perchè essendo un decorator di funzioni generiche non si sa quanti parametri passare
 
         print(f"Time elapsed: {time.time() - start}")
 
-    return wrapper
+    return wrapper #return una funzione senza parentesi returna il riferimento in memoria
+                    
+@decorator #nome della funzione decorator sopra, in questo modo calcolerà il tempo che la funzione ci metterà ad eseguirsi
+def area_cerchio(raggio:float):
 
+    return raggio * raggio * 3.14
+
+class Analisi:
+
+    @staticmethod
+    def tempo(func):
+
+        def wrapper(*args):
+            
+            import time
+            start = time.time() 
+            func(*args)
+            print(f"Time elapsed: {time.time() - start}")
+        return wrapper 
+        
+@Analisi.tempo
+def area_cerchio(raggio:float):
+
+    return raggio * raggio * 3.14
+
+#area_cerchio(1)  attenzione perchè se si importa da cartella ad esempio il decorator
+                  #questa prova della funzione si esegue nel terminale.  

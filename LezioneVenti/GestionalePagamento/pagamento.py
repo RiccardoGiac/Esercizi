@@ -28,11 +28,22 @@ class PagamentoContanti(Pagamento):
         
         self.banconote: list = [500.0,200.0,100.0,50.0,20.0,10.0,5.0]
         self.monete: list = [2.0,1.0,0.5,0.2,0.1,0.05,0.02,0.01]
+        d_soldi: dict = {}
 
-        
         for e in self.banconote:
+            count: int = 0
             while self.importo > e:
                 self.importo - e
+                count += 1
+            d_soldi[e] = count
+
+        for e in self.monete:
+            count: int = 0
+            while self.importo > e:
+                self.importo - e
+                count += 1
+            d_soldi[e] = count    
+            
                 
 
 

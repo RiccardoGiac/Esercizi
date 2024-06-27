@@ -22,7 +22,7 @@ class PagamentoContanti(Pagamento):
         self.importo = importo
 
     def dettagliPagamento(self):
-        print(f"Importo del pagamento in contanti è: €{self.importo:.2f}")
+        print(f"Pagamento in contanti di: €{self.importo:.2f}")
 
     def inPezziDa(self):
         
@@ -43,8 +43,23 @@ class PagamentoContanti(Pagamento):
                 self.importo - e
                 count += 1
             d_soldi[e] = count    
-            
+
+        for k in d_soldi:
+            if k >= 5:
+                print(f"{d_soldi[k]} banconota/e da {k} euro")
+            else:
+                print(f"{d_soldi[k]} moneta/e da {k} euro")
+
                 
+class PagamentoCartaDiCredito(Pagamento):
+
+    def __init__(self, importo:float,nome_cognome:str,data_scad:str,n_carta:int) -> None:
+        super().__init__()
+        self.importo = importo
+        self.nome_cognome = nome_cognome
+        self.data_scad = data_scad
+        self.n_carta = n_carta
+
 
 
         

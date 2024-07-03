@@ -1,1 +1,2 @@
-print("Docker print")
+a = "Docker Print"
+print(a)

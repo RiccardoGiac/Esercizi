@@ -39,5 +39,3 @@ class ContextManager:
     
 
 
-    
-with ContextManager as cm

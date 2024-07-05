@@ -198,9 +198,11 @@ for t in threads:
     
     t.join()
 
-print(f"Prima di thread")
-x.start()
-print(f"Thread partito") #-> dopo questo sleep di 2 sec
-x.join() #->aspetta per eseguire il secondo print del time
-print("Thread finito????") #-> printa dopo il secondo time
+#print(f"Prima di thread")
+#x.start()
+#print(f"Thread partito") #-> dopo questo sleep di 2 sec
+#x.join() #->aspetta per eseguire il secondo print del time
+#print("Thread finito????") #-> printa dopo il secondo time
+
+
 

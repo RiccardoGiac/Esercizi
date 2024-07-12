@@ -43,6 +43,7 @@ class CifratoreAScorrimento(CodificatoreMessaggio,DecodificatoreMessaggio):
         t_cod = "".join(t_cod)
         return t_cod
     
+    
     def decodifica(self, testoCodificato: str):
         alfabeto: str = "abcdefghijklmnopqrstuvwxyz"
         alfabeto = list(alfabeto)
@@ -52,7 +53,11 @@ class CifratoreAScorrimento(CodificatoreMessaggio,DecodificatoreMessaggio):
         for c in testoCodificato:
             if c in alfabeto:
                 letteraind = alfabeto.index(c)
-            
+                t_cod.append(alfabeto[letteraind-self.chiave])
+        
+        t_cod = "".join(t_cod)
+        return t_cod 
+       
 
 
 
@@ -63,6 +68,7 @@ class CifratoreAScorrimento(CodificatoreMessaggio,DecodificatoreMessaggio):
 
 ci:CifratoreAScorrimento = CifratoreAScorrimento(3)
 print(ci.codifica(testoInChiaro="xyz"))
+print(ci.decodifica(testoCodificato="abc"))
                               
 
                      

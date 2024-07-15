@@ -1,0 +1,71 @@
+annotazioni chiave:
+-utente pubblica annunci per vendita di singoli oggetti(post)
+utente(nome,data registrazione)
+
+-oggetti in vendita(classe) con attributi:descrizione,
+categoria,prezzo,metodi di pagamento accettati
+(bonifico o carta di credito) e informazione sullo stato dell'oggetto
+
+-i post si dividono in due tipologie(se prevedono un'asta o meno)
+    -per quelle che la prevedono specificare:
+        -prezzo iniziale
+        -l'ammontare dei rialzi(es. 5 euro a rialzo)
+        -scadenza dell'asta
+        -prezzo compra subito
+        -(bid attuale?)
+    -per i post che non prevedono un asta(compralo subito):
+        -prezzo di vendita
+
+    -gli utenti possono pubblicare(via Web) post con o senza asta
+
+-gli oggetti dei post che prevedono un'asta diventano oggetto di offerte
+di acquisto da parte di più utenti, queste vengono chiamate bid.
+    -di ogni bid interessa:
+        -l'istante in cui viene proposto
+        -l'utente offerente(bidder)
+        -(bid attuale?)
+    
+    -gli oggetti alla scadenza dell'asta vengono aggiudicati all'ultimo
+     utente che ha effettuato un bid
+
+-di ogni asta conclusa interessa:
+    -bid che si è aggiudicato l'oggetto(se esiste,quindi non compralo subito)
+    -prezzo relativo al bid
+
+-gli oggetti hanno una garanzia:
+    -se sono nuovi 2 anni
+    -se sono usati può essere non prevista
+
+-gli oggetti usati al venditore viene richiesto di dichiararele condizioni:
+    (ottimo,buono,discreto,da sistemare).
+
+-gli oggetti sono organizzati in categorie(primo, secondo livello ecc)
+
+-oltre gli utenti privati abbiamo i venditori professionali
+ che devono avere come caratteristiche:
+    -vetrina on-line tramite url
+    -ulteriori informazioni legali
+    -possono solo effettuare vendite
+    -popolarità(bassa<50, media 50..300, alta>300)
+
+-gli utenti possono effettuare i feedback sulla qualità dell'oggetto
+ venduto dai venditori privati. I feedback hanno queste caratteristiche:
+    -voto 0..5
+    -commento testuale(opzionale)
+
+-per l'affidabilità dell'utente venditore si tengono in considerazione:
+    -feedback ricevuti(totali) che sono:
+        -negativi
+        -positivi
+    l'affidabilità viene indicata con 0 o 1 a seconda dei feedback
+    attraverso un calcolo che non ci interessa
+
+
+
+    
+
+
+        
+
+
+

@@ -40,7 +40,7 @@ class CifratoreAScorrimento(CodificatoreMessaggio,DecodificatoreMessaggio):
                 i += 1
             t_cod.append(alfabeto[letteraind]) 
         
-        t_cod = "".join(t_cod)
+        t_cod = "".join(t_cod) #da lista a stringa
         return t_cod
     
     

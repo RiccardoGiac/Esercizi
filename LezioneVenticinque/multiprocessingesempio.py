@@ -53,5 +53,6 @@ if __name__ == "__main__": #quando si importa in un altro file non viene eseguit
         #time.sleep(45)
         toc: float = time.time()
         time_elapsed: float = toc - tic
+        
 
         print(f"{time_elapsed=}") # con = il print printa anche time_elapsed=

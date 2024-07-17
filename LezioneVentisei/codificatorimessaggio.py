@@ -57,6 +57,31 @@ class CifratoreAScorrimento(CodificatoreMessaggio,DecodificatoreMessaggio):
         
         t_cod = "".join(t_cod)
         return t_cod 
+    
+
+class CifratoreACombinazione(CodificatoreMessaggio,DecodificatoreMessaggio):
+
+    def __init__(self,n:int) -> None:
+        super().__init__()
+        self.n: int = n
+
+    def codifica(self, testoInChiaro: str):
+        lista_TIC: list[str]= list(testoInChiaro)
+        mid_point: int = len(lista_TIC)//2
+
+        l1:list[str] = lista_TIC[:mid_point]
+        l2:list[str] = lista_TIC[mid_point:]
+
+        msgcod:list[str] = []
+        
+    
+       
+                
+
+
+    
+c = CifratoreACombinazione(n=5)
+
        
 
 

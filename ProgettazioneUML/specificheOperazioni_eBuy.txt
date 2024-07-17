@@ -1,0 +1,22 @@
+#Riccardo Giacalone
+
+Specifica delle seguenti Operazioni:
+
+-Utente.feedback_ricevuti()
+-PostAsta.prezzo_finale()
+-PostAsta.bid_aggiudicatario()
+
+
+1. Utente.feedback_ricevuti():
+
+feedback_ricevuti(Inizio:Data,fine:Data): Feedback[0..*]
+    
+    pre condizioni:
+
+            -sia u:Utente tale che (this,u):vende
+            -
+
+    
+    post condizioni:
+
+            -

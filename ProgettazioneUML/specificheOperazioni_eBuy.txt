@@ -9,14 +9,47 @@ Specifica delle seguenti Operazioni:
 
 1. Utente.feedback_ricevuti():
 
-feedback_ricevuti(Inizio:Data,fine:Data): Feedback[0..*]
+feedback_ricevuti(inizio:Data,fine:Data): Feedback[0..*]
     
     pre condizioni:
 
-            -sia u:Utente tale che (this,u):vende
-            -
+            -L'utente deve essere registrato
+            -L'utente deve partecipare ad almeno un collegamento di tipo "vende"
+            -La data di "fine" deve essere più recente della data di "inizio"
 
     
     post condizioni:
 
-            -
+            -Il risultato restituirà un numero pari alla somma dei feedback totali ricevuti dall'utente tra la data "inizio" e la data "fine"
+
+
+2. PostAsta.prezzo_finale():
+
+prezzo_finale() : Reale >= 0
+
+    pre condizioni:
+           
+             -L'asta deve essere conclusa
+             
+    
+    
+    post condizioni:
+             
+             -il risultato restituirà il prezzo finale composto dal prezzo iniziale + il rialzo moltiplicato al numero dei bid degli utenti privati a cui l'asta è legata dal collegamento "bid_asta"
+             -se non vi è alcun collegamento "bid_asta" verrà restituito 0
+
+
+3. PostAsta.bid_aggiudicatario():
+
++bid_aggiudicatario() : Bid [0..1]
+
+    pre condizioni:
+
+             -L'asta deve essere conclusa
+        
+
+    post condizioni
+
+             -Il risultato restituirà il bid aggiudicatario il quale sarà determinato dall'istante dell'ultimo bid
+             -se non vi è alcun collegamento "bid_asta" verrà restituito 0        
+

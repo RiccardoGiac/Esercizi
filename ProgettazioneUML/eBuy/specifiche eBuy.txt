@@ -1,0 +1,27 @@
+Specifica classe Bid 
+
+=== Operazioni ===
+
+prezzo_asta(): Reale >= 0
+
+    pre:
+
+    post:
+        -Sia a:Asta tale che (this,a):bid_asta
+       
+        
+        -Sia 'n' il numero di oggetti di classe b:Bid che:
+                -(b,a):bid_asta  # tra b ed a c'è un link di tipo bid_asta
+                -b.istante < this.istante
+
+        result = a.prezzo_iniziale + a.rialzo * n
+
+=== Vincoli esterni ===
+
+[V.Bid.istante_legale]
+Per ogni oggetto b:Bid, b.istante deve essere compreso tra l'istante
+di apertura e chiusura dell'asta associata a b. Più formalmente:
+
+Per ogni b:Bid,
+                -sia a:PostAsta t.c. (b,a):bid_asta
+                -deve essere b.istante >= a.apertura e b.istante <= a.scadenza

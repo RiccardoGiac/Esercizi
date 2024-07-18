@@ -23,7 +23,7 @@ bid_aggiudicatario(): Bid [0..1]
 
     pre:
         -this.scadenza < adesso
-        -esiste b:Bid tale che (b,this):bid_asta
+        
 
     post:
         Sia result:Bid tale che:  #result di tipo Bid

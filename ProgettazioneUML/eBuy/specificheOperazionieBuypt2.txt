@@ -9,6 +9,8 @@ acquirente():UtentePrivato
         Sia b:Bid = this.bid_aggiudicatario()
             -result:UtentePrivato tale che (result,b):bidder
 
+###############################################
+
 Specifica classe PostCompraSubito:
 
 acquirente(): UtentePrivato

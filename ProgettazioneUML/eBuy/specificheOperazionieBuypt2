@@ -1,0 +1,20 @@
+Specifica classe PostAsta:
+
+acquirente():UtentePrivato
+
+    pre:
+        this.bid.aggiudicatario():Bid #effettivamente l'operazione può essere svolta restituendo un Bid
+
+    post:
+        Sia b:Bid = this.bid_aggiudicatario()
+            -result:UtentePrivato tale che (result,b):bidder
+
+Specifica classe PostCompraSubito:
+
+acquirente(): UtentePrivato
+
+    pre:
+        esiste u:UtentePrivato tale che: (u,this):acquista
+
+    post:
+        Sia result:UtentePrivato tale che (result,this):acquista

@@ -1,0 +1,53 @@
+Specifica classe Utente:
+Utente.feedback_ricevuti(inizio:Data,fine:Data): Feedback[0..*]
+
+    
+    pre: nessuna
+    
+    
+    post:
+        -Sia P l'insieme di tutte le istanze p:PostOggetto tali che (this,p):vende
+        -result è l'insieme di tutte le istanze f:Feedback tali che esiste(f,p):riguarda per qualche p:P
+
+Specifica classe postAsta:
+prezzo_finale():Reale >= 0
+
+    pre:
+        this.scadenza < adesso
+
+    post:
+        result = this.bid_aggiudicatario().prezzo_asta() #perchè alla scadenza (data dal pre) il bid aggiudicatario = al prezzo_finale
+
+
+bid_aggiudicatario(): Bid [0..1]
+
+    pre:
+        -this.scadenza < adesso
+        -esiste b:Bid tale che (b,this):bid_asta
+
+    post:
+        Sia result:Bid tale che:  #result di tipo Bid
+            -(result,this):bid_asta   #result è legato all'oggetto postAsta(this) da un link bid_asta
+            -non esiste alcun b:Bid tale che:
+                -(b,this):bid_asta
+                -b.istante > result.istante
+
+acquirente():UtentePrivato
+
+    pre:
+        this.scadenza < adesso
+
+    post:
+        Sia b:Bid = this.bid_aggiudicatario()
+            -result:UtentePrivato tale che (result,b):bidder
+
+Specifica classe PostCompraSubito:
+
+acquirente(): UtentePrivato
+
+    pre:
+        nessuna
+
+    post:
+        Sia result:UtentePrivato tale che (result,this):acquista
+

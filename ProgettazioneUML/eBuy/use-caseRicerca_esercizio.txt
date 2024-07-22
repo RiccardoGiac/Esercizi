@@ -1,0 +1,31 @@
+Specifica Operazioni:
+
+oggetti_categorie(C: Categoria[1..*]): PostOggetto [0..*]:
+
+        pre:
+            
+        
+        post:
+            Sia result l'insieme di po:PostOggetto per ogni c:Categoria apprtenente a C tale che (c,po):cat_post 
+
+#################
+ 
+ radici(): Categoria [1..*]:
+
+        pre:
+            deve esistere almeno un'istanza di Categoria
+
+        post:
+            sia result l'insieme di c:Categoria tale che non esista alcun collegamento (c:figlia,c1:madre):gerarchia 
+
+##################
+
+utenti_senza_bid(inizio: DataOra, fine: DataOra): Privato [0..*]:
+
+        pre:
+            la data di fine deve essere maggiore di inizio
+
+        post:
+            sia result l'insieme di up:UtentePrivato tale che:
+                -up non ha partecipato ad alcun b:Bid in un collegamento(up,b):bidder tale che
+                l'istante b.istante sia compreso tra la data di inizio e fine

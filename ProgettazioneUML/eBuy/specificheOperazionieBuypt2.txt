@@ -20,3 +20,28 @@ acquirente(): UtentePrivato
 
     post:
         Sia result:UtentePrivato tale che (result,this):acquista
+
+#################################################
+
+Vincoli Esterni Feedback
+
+Per ogni pa:postAsta:
+    Sia f:Feedback tale che (f,pa):riguarda solo se
+        -f.istante è > dell'istante di pa.scadenza
+        -esiste almeno un b:Bid tale che (b,pa):bid_asta
+
+Per ogni pc:PostCompraSubito:
+    Sia f:Feedback tale che (f,pc):riguarda solo se
+        esiste un u:UtentePrivato tale che (u,pc):acquista
+
+==OPPURE==
+
+Per ogni f:Feedback:
+    Sia p:PostOggetto tale che (f,p):riguarda deve essere vero che:
+        -se p:PostAsta:
+            -f.istante è > dell'istante di p.scadenza
+            -esiste almeno un b:Bid tale che (b,p):bid_asta
+        -se p:PostCompraSubito:
+            Sia f:Feedback tale che (f,pc):riguarda solo se
+            esiste un u:UtentePrivato tale che (u,pc):acquista
+

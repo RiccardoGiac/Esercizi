@@ -40,14 +40,20 @@ class Library:
     def add_book(self,book_id:str,title:str,author:str):
         if book_id not in self.books:
             self.books[book_id] = Book(book_id,title,author)
+        else:
+            print("Book not found")
     
     def register_member(self,member_id:str,name:str):
         if member_id not in self.members:
             self.members[member_id] = Member(member_id,name)
+        else:
+            print("Member not found")
     
     def borrow_book(self,member_id:str,book_id:str):
         if member_id in self.members and book_id in self.books:
             self.members[member_id].borrow_book(self.books[book_id])
+            del self.books[book_id]
+        
     
     def return_book(self,member_id:str,book_id:str):
         if member_id in self.members and book_id in self.books:

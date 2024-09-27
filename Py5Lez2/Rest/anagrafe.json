@@ -1,0 +1,38 @@
+{
+    "dctnst34b56h501u": {
+        "nome": "mario",
+        "cognome": "de martino",
+        "data nascita": "21/05/1980",
+        "codice fiscale": "dctnst34b56h501u"
+    },
+    "dctnst34b56h501a": {
+        "nome": "gianni",
+        "cognome": "de martino",
+        "data nascita": "21/05/1980",
+        "codice fiscale": "dctnst34b56h501u"
+    },
+    "dctnst34b56h503e": {
+        "nome": "maria",
+        "cognome": "de martino",
+        "data nascita": "21/05/1980",
+        "codice fiscale": "dctnst34b56h503e"
+    },
+    "dctnst34b56h503b": {
+        "nome": "carlo",
+        "cognome": "de martino",
+        "data nascita": "21/05/1980",
+        "codice fiscale": "dctnst34b56h503b"
+    },
+    "aaaaa": {
+        "nome": "mario",
+        "cognome": "rossi",
+        "data nascita": "123",
+        "codice fiscale": "aaaaa"
+    },
+    "dctnst34b56h503f": {
+        "nome": "Fabio",
+        "cognome": "De Martino",
+        "data nascita": "23/05/1998",
+        "codice fiscale": "dctnst34b56h503f"
+    }
+}

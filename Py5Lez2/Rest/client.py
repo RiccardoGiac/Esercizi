@@ -50,5 +50,18 @@ while sOper != "5":
         except:
             print("Problemi di comunicazione con il server")
     
+    if sOper == "3":
+        api_url = base_url + "/mod_cittadino"
+        jsonDataRequest = RichiediCodF()
+        try:
+            response = requests.post(api_url,json=jsonDataRequest)
+            print(response.status_code)
+            print(response.headers["Content-Type"])
+            data1 = response.json()
+            print(data1)
+        except:
+            print("Problemi di comunicazione con il server")
+    
+
     CreaInterfaccia()
     sOper = input("Seleziona operazione")

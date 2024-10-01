@@ -7,7 +7,7 @@ api = Flask(__name__)
 @api.route('/add_cittadino', methods=['POST'])
 def GestisciAddCittadino():
     #prendi i dati della richiesta
-    content_type = request.headers.get('Content-Type') 
+    content_type = request.headers.get('Content-Type') #Nell'headers http c'è il tipo application/json nella voce 'Content-Type' e ci serve per dire che il file a cui facciamo riferimento è tipo json
     print("Ricevuta chiamata " + content_type)
     if content_type =="application/json": #se il pacchetto che arriva al server è tipo json fa sta roba
         jRequest = request.json #request.json è il pacchetto di risposte che dà il cittadino da client.py in formato json(chiave il cod fis con valori simile dizionario)
@@ -111,5 +111,5 @@ def ModCittadino():
 
 
 
-api.run(host="127.0.0.1", port=8080)
+api.run(host="127.0.0.1", port=8080) #accedibile da questi host e port
 

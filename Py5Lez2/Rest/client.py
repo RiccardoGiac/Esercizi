@@ -68,7 +68,7 @@ while sOper != "5":
                 api_url = base_url + "/mod_cittadino"
                 jsonDataRequest = RichiediDatiCittadino()
                 jsonRequest2 = {"cod old": jsonDataRequest1["codice fiscale"], "nuovo dato":jsonDataRequest}
-                try:
+                try:                        #prende il cod fiscale da jsonDataRequest1 = RichiediCodF() sopra
                     response = requests.post(api_url,json=jsonRequest2)
                     print(response.status_code)
                     print(response.headers["Content-Type"])

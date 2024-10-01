@@ -1,6 +1,8 @@
 import json, requests
+from myjson import JsonDeserialize, JsonSerialize
 
 base_url = "http://127.0.0.1:8080"
+sFileAnagrafe = "./anagrafe.json"
 
 def CreaInterfaccia():
     print("Operazioni disponibili")
@@ -22,6 +24,7 @@ def RichiediCodF():
     codFiscale = input("inserisci codice fiscale: ")
     jRequest = {"codice fiscale" :codFiscale}
     return jRequest
+
 
 CreaInterfaccia()
 sOper = input("Seleziona operazione")
@@ -51,17 +54,49 @@ while sOper != "5":
             print("Problemi di comunicazione con il server")
     
     if sOper == "3":
-        api_url = base_url + "/mod_cittadino"
-        jsonDataRequest = RichiediCodF()
+        api_url = base_url + "/anag_cittadino"
+        jsonDataRequest1 = RichiediCodF()
+        
         try:
-            response = requests.post(api_url,json=jsonDataRequest)
+            response = requests.post(api_url,json=jsonDataRequest1)
             print(response.status_code)
             print(response.headers["Content-Type"])
             data1 = response.json()
             print(data1)
+            
+            if response.status_code == 200:
+                api_url = base_url + "/mod_cittadino"
+                jsonDataRequest = RichiediDatiCittadino()
+                jsonRequest2 = {"cod old": jsonDataRequest1["codice fiscale"], "nuovo dato":jsonDataRequest}
+                try:
+                    response = requests.post(api_url,json=jsonRequest2)
+                    print(response.status_code)
+                    print(response.headers["Content-Type"])
+                    data1 = response.json()
+                    print(data1)
+                except:
+                       print("Problemi di comunicazione con il server")
+
+            elif response.status_code == 201:
+                print("Codice Fiscale già presente o errato.")
+
+            else:
+                print("Problemi di comunicazione con il server")
+
         except:
             print("Problemi di comunicazione con il server")
     
+    if sOper == "4":
+        api_url = base_url + "/del_cittadino"
+        jsonDataRequest = RichiediCodF()
+        try:
+            response = requests.post(api_url,json=jsonDataRequest)
+            print(response.status_code)
+            print(response.headers["Content-Type"])#Content-Type è nell'header di http e indica il tipo di file(in questo caso json > application/json)
+            data1 = response.json()
+            print(data1)
+        except:
+            print("Problemi di comunicazione con il server")   
 
     CreaInterfaccia()
     sOper = input("Seleziona operazione")

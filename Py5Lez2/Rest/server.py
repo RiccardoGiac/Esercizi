@@ -47,31 +47,69 @@ def GestisciReqCittadino():
     else:
         return "Errore, formato non riconosciuto", 401
 
-@api.route('/mod_cittadino', methods=['POST'])
-def ModificaCittadino():
-    newdict = {}
-    content_type = request.headers.get('Content-Type')
+@api.route('/del_cittadino', methods=['POST'])
+def GestisciDelCittadino():
+    content_type = request.headers.get('Content-Type') 
     print("Ricevuta chiamata " + content_type)
     if content_type =="application/json":
         jRequest = request.json
         sCodiceFiscale = jRequest["codice fiscale"]
         dAnagrafe = JsonDeserialize(sFileAnagrafe)
         if sCodiceFiscale in dAnagrafe:
-            mod = input("Inserisci nuovo nome: ")
-            newdict["nome"] = mod
-            mod = input("Inserisci nuovo cognome: ")
-            newdict["cognome"] = mod
-            mod = input("Inserisci nuova data nascita: ")
-            newdict["data nascita"] = mod
-            newdict["codice fiscale"] = sCodiceFiscale
-            dAnagrafe[sCodiceFiscale] = newdict
-            jResponse = {"Error":"001", "Msg": "ok"}
-            return json.dumps(jResponse),200
+            del dAnagrafe[sCodiceFiscale]
+            JsonSerialize(dAnagrafe,sFileAnagrafe)
+            jResponse = {"Error":"000", "Msg": "Eliminato con successo."}
+            
+            return json.dumps(jResponse), 200
         else:
             jResponse = {"Error":"001", "Msg": "codice fiscale non riconosciuto"}
+            
             return json.dumps(jResponse), 200
     else:
         return "Errore, formato non riconosciuto", 401
+
+@api.route('/anag_cittadino', methods=['POST'])
+def AnagCittadino():
+     
+     content_type = request.headers.get('Content-Type')
+     print("Ricevuta chiamata " + content_type)
+     if content_type =="application/json":
+         jRequest = request.json
+         sCodiceFiscale = jRequest["codice fiscale"]
+         dAnagrafe = JsonDeserialize(sFileAnagrafe)
+         if sCodiceFiscale in dAnagrafe:
+            JsonSerialize(dAnagrafe,sFileAnagrafe)
+            jResponse = {"Error":"000", "Msg": "Codice fiscale presente."}
+            return json.dumps(jResponse), 200
+         else:
+             jResponse = {"Error":"001", "Msg": "codice fiscale non riconosciuto"}
+            
+             return json.dumps(jResponse), 201
+     else:
+        return "Errore, formato non riconosciuto", 401  
+
+@api.route('/mod_cittadino', methods=['POST'])
+def ModCittadino():
+     
+     content_type = request.headers.get('Content-Type')
+     print("Ricevuta chiamata " + content_type)
+     if content_type =="application/json":
+         jRequest = request.json
+         sCodFiscaleVecchio = jRequest["cod old"]
+
+         sCodiceFiscale = jRequest["nuovo dato"]["codice fiscale"]
+         dAnagrafe = JsonDeserialize(sFileAnagrafe)
+         del dAnagrafe[sCodFiscaleVecchio]
+         dAnagrafe[sCodiceFiscale] = jRequest["nuovo dato"]
+         
+         
+         JsonSerialize(dAnagrafe,sFileAnagrafe)
+         jResponse = {"Error":"000", "Msg": "Cittadino modificato con successo."}
+         return json.dumps(jResponse), 200 
+     else:
+          return "Errore, formato non riconosciuto", 401  
+
+
 
 api.run(host="127.0.0.1", port=8080)
 

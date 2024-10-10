@@ -1,12 +1,16 @@
 import json
-import jsonschema
-import requests
-import sys
 
-def JsonSerialize(data, sFile):
-    with open(sFile, "w") as write_file:
-        json.dump(data, write_file,indent=4)
+#Serializzare 
+def JsonSerialize(dData, sFile)->int:
+    if type(dData) is not dict:
+        return 1
+    try:
+        with open(sFile, "w") as write_file:
+            json.dump(dData, write_file,indent=4)
+        return 0
+    except:
+        return 2
 
-def JsonDeserialize(sFile):
+def JsonDeserialize(sFile)->dict:
     with open(sFile, "r") as read_file:
         return json.load(read_file)

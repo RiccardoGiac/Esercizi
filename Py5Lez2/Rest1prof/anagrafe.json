@@ -32,7 +32,25 @@
     "asddsa": {
         "nome": "adsadads",
         "cognome": "asdadsads",
-        "data nascita": "dsaadsads",
+        "data nascita": "10/01/1999",
         "codice fiscale": "asddsa"
+    },
+    "VLDPTN02H04Z145J": {
+        "nome": "Vladimir",
+        "cognome": "Putin",
+        "data nascita": "14/04/1998",
+        "codice fiscale": "VLDPTN02H04Z145J"
+    },
+    "GVNBNN01L04R132E": {
+        "nome": "Gio",
+        "cognome": "Ban",
+        "data nascita": "21/02/2001",
+        "codice fiscale": "GVNBNN01L04R132E"
+    },
+    "CHTGPT01G01K000J": {
+        "nome": "Chat",
+        "cognome": "GPT",
+        "data nascita": "01/01/2001",
+        "codice fiscale": "CHTGPT01G01K000J"
     }
 }

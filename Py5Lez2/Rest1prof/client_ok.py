@@ -25,13 +25,13 @@ def GetCodicefiscale():
 def EseguiOperazione(iOper, sServizio, dDatiToSend):
     try:
         if iOper == 1:
-            response = requests.post(sServizio, json=dDatiToSend,verify=False)
+            response = requests.post(sServizio, json=dDatiToSend, verify=False)
         if iOper == 2:
-            response = requests.get(sServizio,verify=False)
+            response = requests.get(sServizio, verify=False)
         if iOper == 3:
-            response = requests.put(sServizio, json=dDatiToSend,verify=False)
+            response = requests.put(sServizio, json=dDatiToSend, verify=False)
         if iOper == 4:
-            response = requests.delete(sServizio, json=dDatiToSend,verify=False)
+            response = requests.delete(sServizio, json=dDatiToSend, verify=False)
 
         if response.status_code==200:
             print(response.json())
@@ -66,6 +66,7 @@ def EffettuaPrimoLogin():
     except:
         print("Attenzione, problemi di comunicazione con il server")
         iPrimoLoginEffettuato = 0
+
 
 print("Benvenuti al Comune - sede locale")
 sUsername=""

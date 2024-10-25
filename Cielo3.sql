@@ -39,25 +39,19 @@ having avg(v.durataMinuti) > dmv.mediaVoli
 --Query3--
 --Quali sono le città dove il numero totale di voli in arrivo è maggiore
 --del numero medio dei voli in arrivo per ogni città?--
-with aa as (SELECT a.codice as ae,count(ap.arrivo) as nta
-from ArrPart ap
-JOIN Aeroporto a ON ap.arrivo = a.codice
-group by a.codice
-),
---media tutte le citta--
-cm as(
-    SELECT avg(aa.nta) as numero
-    FROM aa
-    JOIN LuogoAeroporto la on la.aeroporto = aa.ae
-    JOIN ArrPart ap on ap.arrivo = aa.ae
+
+WITH cc as(
+SELECT  la.citta, count(ap.arrivo) --query 3 da rivedere--
+    FROM ArrPart ap, LuogoAeroporto la
+    WHERE ap.arrivo = la.aeroporto
+    group by la.citta
 )
---calcolo citta sopra media
-select la.citta, count(ap.arrivo) as numero
-from cm,aa
-JOIN LuogoAeroporto la on la.aeroporto = aa.ae
-JOIN ArrPart ap on ap.arrivo = aa.ae
-group by la.citta,cm.numero
-having count(ap.arrivo) > cm.numero
+
+SELECT cc_a.citta, cc_a.count as countavg
+FROM cc cc_a, cc cc_b
+WHERE true
+group by cc_a.citta,cc_a.count
+having cc_a.count > avg(cc_b.count)
 
 --Query4--
 
@@ -108,12 +102,7 @@ where v.codice = ap.codice and v.comp = ap.comp
     AND l.aeroporto = a.codice
 GROUP by l.nazione,l.citta
 
---------------------------------------------
 
-SELECT DISTINCT la.citta, count(ap.arrivo) --query 3 da rivedere--
-    FROM ArrPart ap, LuogoAeroporto la
-    WHERE ap.arrivo = la.aeroporto
-    group by DISTINCT la.citta, ap.arrivo
 
 
     

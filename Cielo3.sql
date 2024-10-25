@@ -41,7 +41,7 @@ having avg(v.durataMinuti) > dmv.mediaVoli
 --del numero medio dei voli in arrivo per ogni città?--
 
 WITH cc as(
-SELECT  la.citta, count(ap.arrivo) --query 3 da rivedere--
+SELECT  la.citta, count(ap.arrivo) 
     FROM ArrPart ap, LuogoAeroporto la
     WHERE ap.arrivo = la.aeroporto
     group by la.citta
@@ -76,27 +76,30 @@ SELECT ap.comp, avg(v.durataMinuti) as durataMediaVolo
 
 WITH media as
 (
-    SELECT l.citta as citta,AVG(v.durataMinuti) as media
+    SELECT l.citta as citta,avg(v.durataMinuti) as media
     FROM Volo v, LuogoAeroporto l, ArrPart ap, Aeroporto a
-    WHERE v.codice = ap.codice and v.comp = ap.comp
+    WHERE v.codice = ap.codice 
+    AND v.comp = ap.comp
         AND ap.arrivo = a.codice
         AND l.aeroporto = a.codice
     GROUP BY l.citta
 )
-SELECT l.citta, AVG(v.durataMinuti) as durata_media
+SELECT l.citta, avg(v.durataMinuti) as durata_media
 FROM Volo v, LuogoAeroporto l, ArrPart ap, Aeroporto a,media
-WHERE v.codice = ap.codice and v.comp = ap.comp
+WHERE v.codice = ap.codice 
+        AND v.comp = ap.comp
         AND arrivo = a.codice
         AND l.aeroporto = a.codice
 GROUP BY l.citta,media.media
-HAVING AVG(v.durataMinuti) = (STDDEV(v.durataMinuti) + media.media)
+HAVING avg(v.durataMinuti) = (STDDEV(v.durataMinuti) + media.media)
 
 --Query6--
 
-WITH codice as (SELECT partenza from ArrPart)
-SELECT l.nazione, count(distinct l.citta) as citta
-from Volo v, LuogoAeroporto l, ArrPart ap, Aeroporto a,codice
-where v.codice = ap.codice and v.comp = ap.comp
+WITH codice as (SELECT partenza FROM ArrPart)
+SELECT l.nazione, count(DISTINCT l.citta) as citta
+FROM Volo v, LuogoAeroporto l, ArrPart ap, Aeroporto a,codice
+WHERE v.codice = ap.codice 
+    AND v.comp = ap.comp
     AND ap.arrivo = a.codice
     AND ap.partenza <> codice.partenza
     AND l.aeroporto = a.codice

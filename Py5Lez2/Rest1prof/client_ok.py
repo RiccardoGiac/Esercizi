@@ -2,6 +2,8 @@ import requests, json, sys
 
 base_url = "https://127.0.0.1:8080"
 
+sUsername=""
+sPassword = ""
 
 def GetDatiCittadino():
     nome = input("Inserisci il nome: ")
@@ -69,8 +71,7 @@ def EffettuaPrimoLogin():
 
 
 print("Benvenuti al Comune - sede locale")
-sUsername=""
-sPassword = ""
+
 sPrivilegio = ""
 iPrimoLoginEffettuato = 0 
 while iPrimoLoginEffettuato == 0:
@@ -97,7 +98,8 @@ while iFlag==0:
         print("Aggiunta cittadino")
         api_url = base_url + "/add_cittadino"
         jsonDataRequest = GetDatiCittadino()
-        EseguiOperazione(1, api_url, jsonDataRequest)
+        jsonDataRequestNew = {"username":sUsername , "password":sPassword, "datiCittadino":jsonDataRequest } 
+        EseguiOperazione(1, api_url, jsonDataRequestNew)
 
     # Richiesta dati cittadino
     elif iOper == 2:

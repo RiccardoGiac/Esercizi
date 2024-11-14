@@ -2,6 +2,9 @@ from flask import Flask, jsonify, request
 from myjson import JsonDeserialize, JsonSerialize
 import sys
 import dbclient as db
+import urllib3
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 api = Flask(__name__)
 
@@ -35,11 +38,11 @@ def GestisciLogin():
         jsonReq = request.json
         sUsernameInseritoDalClient = jsonReq["username"]
         sPasswordInseritaDalClient = jsonReq["password"]
-        sQuery = "select privilegi from utenti where mail='" + sUsernameInseritoDalClient + "' and password='" + sPasswordInseritaDalClient + "';"  
+        sQuery = "select privilegi from utenti where email='" + sUsernameInseritoDalClient + "' and password='" + sPasswordInseritaDalClient + "';"  
         print(sQuery)
         iNumRows = db.read_in_db(cur,sQuery)
         if iNumRows == 1:
-            #[0,['w']] questo è lRow
+            #[0,['w']] questo è lRow - 0 è l'esito andato bene e 'w' è privilegio
             # 0 è lRow[0] 
             #['w'] questo è lRow[1]
             #'w' è lRow[1][0]
@@ -102,8 +105,13 @@ e verifica se il codice e d i dati associati stanno in anagrafe.json
 """
 
 @api.route('/read_cittadino/<codice_fiscale>/<username>/<password>', methods=['GET'])
-def read_cittadino(codice_fiscale,username,password):
+def read_cittadino():
 
+    global cur
+    content_type = request.headers.get('Content-Type')
+    if content_type == 'application/json':
+        jsonReq = request.json
+    codice_fiscale = jsonReq.get('codFiscale')
     #prima di tutto verifico utente, password e privilegio 
     #dove utente e password me l'ha inviato il client
     #mentre il privilegio lo vado a leggere nel mio file  (utenti.json)

@@ -125,7 +125,8 @@ def read_cittadino(codice_fiscale):
         return jsonify({"Esito": "001", "Msg": "Cittadino non trovato"}), 200
     else:
         dResponse = db.read_next_row(cur) #torna una struttura dati tipo il login
-        return jsonify({"Esito": "000", "Msg": "Cittadino trovato", "Dati": dResponse[1][0]}), 200
+        cittadino = dResponse[1]
+        return jsonify({"Esito": "000", "Msg": "Cittadino trovato", "Dati": cittadino}), 200
     # if cittadino:
     #     return jsonify({"Esito": "000", "Msg": "Cittadino trovato", "Dati": cittadino}), 200
     # else:

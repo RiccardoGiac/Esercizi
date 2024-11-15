@@ -73,13 +73,13 @@ def GestisciAddCittadino():
         #prima di tutto verifico utente, password e privilegio 
         #dove utente e password me l'ha inviato il client
         #mentre il privilegio lo vado a leggere nel mio file  (utenti.json)
-
-        codice_fiscale = jsonReq.get('codFiscale')
-        nome = jsonReq.get('nome')
-        cognome = jsonReq.get('cognome')
-        dataNascita = jsonReq.get('dataNascita')
+        datiCittadino = jsonReq.get('datiCittadino')
+        codice_fiscale = datiCittadino.get('codFiscale')
+        nome = datiCittadino.get('nome')
+        cognome = datiCittadino.get('cognome')
+        dataNascita = datiCittadino.get('dataNascita')
         
-        sQuery = "insert into anagrafe(codice_fiscale,nome,cognome,data_nascita) values ("
+        sQuery = "insert into anagrafe1(codice_fiscale,nome,cognome,data_nascita) values ("
         sQuery += "'" + codice_fiscale + "','" + nome + "','" + cognome + "','" + dataNascita + "');"
         
         
@@ -104,8 +104,8 @@ Questa funzione sta sul SERVER. Riceve il codice fiscale dal client
 e verifica se il codice e d i dati associati stanno in anagrafe.json
 """
 
-@api.route('/read_cittadino/<codice_fiscale>/<username>/<password>', methods=['GET'])
-def read_cittadino():
+@api.route('/read_cittadino/<codice_fiscale>', methods=['GET'])
+def read_cittadino(codice_fiscale):
 
     global cur
     content_type = request.headers.get('Content-Type')
@@ -116,12 +116,18 @@ def read_cittadino():
     #dove utente e password me l'ha inviato il client
     #mentre il privilegio lo vado a leggere nel mio file  (utenti.json)
     sQuery = "select * from cittadini where codice_fiscale='" + codice_fiscale + "';"
-    
-    cittadino = cittadini.get(codice_fiscale)
-    if cittadino:
-        return jsonify({"Esito": "000", "Msg": "Cittadino trovato", "Dati": cittadino}), 200
-    else:
+    print(sQuery)
+    iNumRecords = db.read_in_db(cur,sQuery) #torna il numero di record della query
+    #inumrecords può restituire 0 se il cf non c'è nella tabella e 1 se c'è
+
+    if iNumRecords == 0:
         return jsonify({"Esito": "001", "Msg": "Cittadino non trovato"}), 200
+    else:
+        return jsonify({"Esito": "000", "Msg": "Cittadino trovato", "Dati": cittadino}), 200
+    # if cittadino:
+    #     return jsonify({"Esito": "000", "Msg": "Cittadino trovato", "Dati": cittadino}), 200
+    # else:
+    #     return jsonify({"Esito": "001", "Msg": "Cittadino non trovato"}), 200
 
 
 

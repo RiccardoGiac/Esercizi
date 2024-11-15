@@ -106,24 +106,26 @@ e verifica se il codice e d i dati associati stanno in anagrafe.json
 
 @api.route('/read_cittadino/<codice_fiscale>', methods=['GET'])
 def read_cittadino(codice_fiscale):
-
     global cur
-    content_type = request.headers.get('Content-Type')
-    if content_type == 'application/json':
-        jsonReq = request.json
-    codice_fiscale = jsonReq.get('codFiscale')
+
+    # content_type = request.headers.get('Content-Type')
+    # if content_type == 'application/json':
+    #     jsonReq = request.json
+    # codice_fiscale = jsonReq.get('codFiscale')
+
     #prima di tutto verifico utente, password e privilegio 
     #dove utente e password me l'ha inviato il client
     #mentre il privilegio lo vado a leggere nel mio file  (utenti.json)
-    sQuery = "select * from cittadini where codice_fiscale='" + codice_fiscale + "';"
+    sQuery = "select * from anagrafe1 where codice_fiscale='" + codice_fiscale + "';"
     print(sQuery)
     iNumRecords = db.read_in_db(cur,sQuery) #torna il numero di record della query
     #inumrecords può restituire 0 se il cf non c'è nella tabella e 1 se c'è
 
-    if iNumRecords == 0:
+    if iNumRecords != 1:
         return jsonify({"Esito": "001", "Msg": "Cittadino non trovato"}), 200
     else:
-        return jsonify({"Esito": "000", "Msg": "Cittadino trovato", "Dati": cittadino}), 200
+        dResponse = db.read_next_row(cur) #torna una struttura dati tipo il login
+        return jsonify({"Esito": "000", "Msg": "Cittadino trovato", "Dati": dResponse[1][0]}), 200
     # if cittadino:
     #     return jsonify({"Esito": "000", "Msg": "Cittadino trovato", "Dati": cittadino}), 200
     # else:
